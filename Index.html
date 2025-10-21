@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Sonrisas</title>
+    <link rel="stylesheet" href="Estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h2>Club Sonrisas</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#casos">Casos Clínicos</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <!-- Aquí puedes agregar tu video -->
+                <source src="6914761_Motion_Graphics_Motion_Graphic_1920x1080.mp4" type="video/mp4">
+                <source src="tu-video.webm" type="video/webm">
+                <!-- Fallback para navegadores que no soportan video -->
+                Tu navegador no soporta el elemento video.
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Especialista en Cuidado Dental</h1>
+                <p class="hero-subtitle">Más de 12 años de experiencia brindando sonrisas saludables</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">Agendar Cita</a>
+                    <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Casos Clínicos -->
+    <section class="casos-clinicos" id="casos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Experiencia</span>
+                <h2>Casos Clínicos</h2>
+                <p>Contamos con un servicio especializado exclusivo de acuerdo a la necesidad de nuestros pacientes, con más de 12 años de experiencia que respaldan nuestro trabajo.</p>
+            </div>
+            <div class="casos-grid">
+                <div class="caso-card card-3d">
+                    <div class="caso-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3>Ortodoncia</h3>
+                    <p>Tratamientos personalizados para alinear tu sonrisa perfectamente.</p>
+                    <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="caso-card card-3d">
+                    <div class="caso-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Estética Dental</h3>
+                    <p>Diseño de sonrisa con las últimas técnicas y materiales.</p>
+                    <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="caso-card card-3d">
+                    <div class="caso-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3>Sedación Consciente</h3>
+                    <p>Procedimientos cómodos y sin dolor con sedación controlada.</p>
+                    <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="servicios" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Calidad</span>
+                <h2>Servicios</h2>
+                <p>Nuestros clientes nos respaldan por brindar un excelente servicio con equipos de primera y los mejores especialistas.</p>
+            </div>
+            <div class="servicios-grid">
+                <div class="servicio-item card-3d">
+                    <div class="servicio-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Implantes Dentales</h3>
+                    <p>Reemplazo permanente de piezas dentales con tecnología avanzada.</p>
+                </div>
+                <div class="servicio-item card-3d">
+                    <div class="servicio-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Blanqueamiento</h3>
+                    <p>Sonrisa más blanca y brillante con tratamientos profesionales.</p>
+                </div>
+                <div class="servicio-item card-3d">
+                    <div class="servicio-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3>Radiología Digital</h3>
+                    <p>Diagnóstico preciso con la última tecnología en imagenología.</p>
+                </div>
+                <div class="servicio-item card-3d">
+                    <div class="servicio-icon">
+                        <i class="fas fa-hand-holding-medical"></i>
+                    </div>
+                    <h3>Periodoncia</h3>
+                    <p>Cuidado especializado de encías y prevención de enfermedades.</p>
+                </div>
+                <div class="servicio-item card-3d">
+                    <div class="servicio-icon">
+                        <i class="fas fa-teeth"></i>
+                    </div>
+                    <h3>Rehabilitación Oral</h3>
+                    <p>Restauración completa de funcionalidad y estética dental.</p>
+                </div>
+                <div class="servicio-item card-3d">
+                    <div class="servicio-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Cirugía Oral</h3>
+                    <p>Procedimientos quirúrgicos con máxima precisión y seguridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instalaciones -->
+    <section class="instalaciones">
+        <div class="container">
+            <div class="instalaciones-content">
+                <div class="instalaciones-text">
+                    <span class="section-tag">Tecnología</span>
+                    <h2>Instalaciones y tecnología de última generación</h2>
+                    <p>Contamos con equipamiento de vanguardia y espacios diseñados para tu comodidad y seguridad. Nuestras instalaciones cumplen con los más altos estándares de calidad.</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Equipos esterilizados y certificados</li>
+                        <li><i class="fas fa-check-circle"></i> Tecnología 3D para diagnóstico</li>
+                        <li><i class="fas fa-check-circle"></i> Ambiente cómodo y relajante</li>
+                        <li><i class="fas fa-check-circle"></i> Protocolos de bioseguridad</li>
+                    </ul>
+                </div>
+                <div class="instalaciones-image">
+                    <div class="gallery-container">
+                        <div class="gallery-main">
+                            <div class="image-wrapper active">
+                                <img src="dental-2450766_1920.jpg" alt="Instalaciones dentales">
+                            </div>
+                            <div class="image-wrapper">
+                                <img src="chair-2584260_1920.jpg" alt="Tecnología dental">
+                            </div>
+                            <div class="image-wrapper">
+                                <img src="dental-2450766_1920.jpg" alt="Consultorio moderno">
+                            </div>
+                            <div class="image-wrapper">
+                                <img src="chair-2584260_1920.jpg" alt="Equipos de última generación">
+                            </div>
+                        </div>
+                        
+                        <!-- Controles de navegación -->
+                        <div class="gallery-controls">
+                            <button class="gallery-btn prev-btn" id="prevBtn">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="gallery-btn next-btn" id="nextBtn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Indicadores -->
+                        <div class="gallery-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                            <span class="indicator" data-slide="3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonios" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Opiniones</span>
+                <h2>Testimonios</h2>
+            </div>
+            <div class="testimonios-slider">
+                <div class="testimonio-card card-3d active">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonio-text">"Excelente atención y profesionalismo. La Dra. Alcedo me ayudó a recuperar mi sonrisa con mucha paciencia y dedicación. Los resultados son increíbles."</p>
+                    <div class="testimonio-autor">
+                        <div class="autor-avatar">MA</div>
+                        <div>
+                            <h4>María Rodríguez</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card card-3d">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonio-text">"El mejor consultorio dental que he visitado. Tecnología de punta, instalaciones impecables y un trato muy humano. Totalmente recomendado."</p>
+                    <div class="testimonio-autor">
+                        <div class="autor-avatar">CP</div>
+                        <div>
+                            <h4>Carlos Pérez</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card card-3d">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonio-text">"Después de años evitando ir al dentista, finalmente encontré un lugar donde me siento cómoda. La sedación consciente fue perfecta para mí."</p>
+                    <div class="testimonio-autor">
+                        <div class="autor-avatar">LG</div>
+                        <div>
+                            <h4>Laura García</h4>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ubicación -->
+    <section class="ubicacion">
+        <div class="container">
+            <div class="ubicacion-content">
+                <div class="ubicacion-info ">
+                    <h2>Visítanos</h2>
+                    <p>Conoce dónde estamos ubicados</p>
+                    <div class="ubicacion-detalles">
+                        <div class="detalle-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Dirección</h4>
+                                <p>Av. Ligre patitas suaves</p>
+                            </div>
+                        </div>
+                        <div class="detalle-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Horario</h4>
+                                <p>Lun - Vie: 9:00 AM - 7:00 PM<br>Sábados: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="detalle-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Teléfono</h4>
+                                <p>+51 999 999 999</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ubicacion-map">
+                    <div id="leafletMap" class="leaflet-map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Comunícate</span>
+                <h2>Reserva tu cita</h2>
+                <p>Rellene los campos</p>
+            </div>
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="asunto">Asunto</label>
+                        <select id="asunto" name="asunto" required>
+                            <option value="">Seleccione...</option>
+                            <option value="consulta">Consulta General</option>
+                            <option value="cita">Agendar Cita</option>
+                            <option value="presupuesto">Solicitar Presupuesto</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit">
+                    Enviar Mensaje <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Club Sonrisas</h3>
+                    <p>Especialista en cuidado dental con más de 12 años de experiencia.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#casos">Casos Clínicos</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#">Ortodoncia</a></li>
+                        <li><a href="#">Implantes</a></li>
+                        <li><a href="#">Estética Dental</a></li>
+                        <li><a href="#">Blanqueamiento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. Ligre Patitas suaves2</li>
+                        <li><i class="fas fa-phone"></i> +51 999 999 999</li>
+                        <li><i class="fas fa-envelope"></i> info@draalcedo.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Club Sonrisas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="map-config.js"></script>
+    <script src="Nav.js"></script>
+</body>
+</html>
