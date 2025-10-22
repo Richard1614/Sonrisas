@@ -162,7 +162,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--gradient);
+    background-color: #52A2B4;
     overflow: hidden;
 }
 
