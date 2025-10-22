@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Club Sonrisas</title>
+    <link rel="icon" href="Logo 1.png">
+    <title>Club Sonrisa</title>
     <link rel="stylesheet" href="Estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <h2>Club Sonrisas</h2>
+                <img src="Imagen2.png" width="100" height="60" alt="">
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
@@ -99,48 +103,93 @@
                 <h2>Servicios</h2>
                 <p>Nuestros clientes nos respaldan por brindar un excelente servicio con equipos de primera y los mejores especialistas.</p>
             </div>
-            <div class="servicios-grid">
-                <div class="servicio-item card-3d">
-                    <div class="servicio-icon">
-                        <i class="fas fa-shield-alt"></i>
+            <div class="servicios-content">
+                <div class="servicios-container">
+                    <div class="servicios-carousel">
+                        <div class="servicios-grid" id="serviciosGrid">
+                            <div class="servicio-item card-3d">
+                                <div class="servicio-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h3>Implantes Dentales</h3>
+                                <p>Reemplazo permanente de piezas dentales con tecnología avanzada.</p>
+                            </div>
+                            <div class="servicio-item card-3d">
+                                <div class="servicio-icon">
+                                    <i class="fas fa-smile"></i>
+                                </div>
+                                <h3>Blanqueamiento</h3>
+                                <p>Sonrisa más blanca y brillante con tratamientos profesionales.</p>
+                            </div>
+                            <div class="servicio-item card-3d">
+                                <div class="servicio-icon">
+                                    <i class="fas fa-x-ray"></i>
+                                </div>
+                                <h3>Radiología Digital</h3>
+                                <p>Diagnóstico preciso con la última tecnología en imagenología.</p>
+                            </div>
+                            <div class="servicio-item card-3d">
+                                <div class="servicio-icon">
+                                    <i class="fas fa-hand-holding-medical"></i>
+                                </div>
+                                <h3>Periodoncia</h3>
+                                <p>Cuidado especializado de encías y prevención de enfermedades.</p>
+                            </div>
+                            <div class="servicio-item card-3d">
+                                <div class="servicio-icon">
+                                    <i class="fas fa-teeth"></i>
+                                </div>
+                                <h3>Rehabilitación Oral</h3>
+                                <p>Restauración completa de funcionalidad y estética dental.</p>
+                            </div>
+                            <div class="servicio-item card-3d">
+                                <div class="servicio-icon">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <h3>Cirugía Oral</h3>
+                                <p>Procedimientos quirúrgicos con máxima precisión y seguridad.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Controles de navegación -->
+                        <div class="carousel-controls">
+                            <button class="carousel-btn prev-btn" id="prevServices">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn next-btn" id="nextServices">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
                     </div>
-                    <h3>Implantes Dentales</h3>
-                    <p>Reemplazo permanente de piezas dentales con tecnología avanzada.</p>
+                    
+                    <!-- Indicadores de posición -->
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <span class="indicator-dot active" data-slide="0"></span>
+                        <span class="indicator-dot" data-slide="1"></span>
+                        <span class="indicator-dot" data-slide="2"></span>
+                        <span class="indicator-dot" data-slide="3"></span>
+                    </div>
                 </div>
-                <div class="servicio-item card-3d">
-                    <div class="servicio-icon">
-                        <i class="fas fa-smile"></i>
+                
+                <!-- Video automático -->
+                <div class="servicios-video">
+                    <div class="servicios-video-content">
+                        <h3>Conoce mas sobrenosotros</h3>
+                        <p>Descubre la tecnología de vanguardia que utilizamos para brindarte el mejor cuidado dental.</p>
+                        <div class="video-container">
+                            <video class="auto-video" autoplay muted loop playsinline>
+                                <source src="6006694_Happy_Positive_3840x2160.mp4" type="video/mp4">
+                                <source src="" type="video/mp4">
+                                Tu navegador no soporta el elemento video.
+                            </video>
+                            <div class="video-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="margin-top: 1rem;">
+                            Ver Más Videos <i class="fas fa-play"></i>
+                        </button>
                     </div>
-                    <h3>Blanqueamiento</h3>
-                    <p>Sonrisa más blanca y brillante con tratamientos profesionales.</p>
-                </div>
-                <div class="servicio-item card-3d">
-                    <div class="servicio-icon">
-                        <i class="fas fa-x-ray"></i>
-                    </div>
-                    <h3>Radiología Digital</h3>
-                    <p>Diagnóstico preciso con la última tecnología en imagenología.</p>
-                </div>
-                <div class="servicio-item card-3d">
-                    <div class="servicio-icon">
-                        <i class="fas fa-hand-holding-medical"></i>
-                    </div>
-                    <h3>Periodoncia</h3>
-                    <p>Cuidado especializado de encías y prevención de enfermedades.</p>
-                </div>
-                <div class="servicio-item card-3d">
-                    <div class="servicio-icon">
-                        <i class="fas fa-teeth"></i>
-                    </div>
-                    <h3>Rehabilitación Oral</h3>
-                    <p>Restauración completa de funcionalidad y estética dental.</p>
-                </div>
-                <div class="servicio-item card-3d">
-                    <div class="servicio-icon">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <h3>Cirugía Oral</h3>
-                    <p>Procedimientos quirúrgicos con máxima precisión y seguridad.</p>
                 </div>
             </div>
         </div>
@@ -209,13 +258,13 @@
                 <h2>Testimonios</h2>
             </div>
             <div class="testimonios-slider">
-                <div class="testimonio-card card-3d active">
+                <div class="testimonio-card  active">
                     <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
+                        <i class="fas fa-quote-left">NN</i>
                     </div>
                     <p class="testimonio-text">"Excelente atención y profesionalismo. El Club Sonriisas me ayudó a recuperar mi sonrisa con mucha paciencia y dedicación. Los resultados son increíbles."</p>
                     <div class="testimonio-autor">
-                        <div class="autor-avatar">NN</div>
+                        <div class="autor-avatar">MA</div>
                         <div>
                             <h4>Nora Nataly</h4>
                             <div class="rating">
@@ -228,7 +277,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonio-card card-3d">
+                <div class="testimonio-card ">
                     <div class="quote-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -247,7 +296,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="testimonio-card card-3d">
+                <div class="testimonio-card">
                     <div class="quote-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
@@ -362,7 +411,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Club Sonrisas</h3>
+                    <h3>Club Sonrisa</h3>
                     <p>Especialista en cuidado dental con más de 12 años de experiencia.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -399,7 +448,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Club Sonrisas. Todos los derechos reservados.</p>
+                <p>© 2025 Club Sonrisa. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

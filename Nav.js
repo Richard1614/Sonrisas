@@ -674,5 +674,125 @@ function setPredefinedLocation(locationKey) {
     }
 }
 
+// Cinta horizontal profesional de servicios
+class ServiciosCarousel {
+    constructor() {
+        this.grid = document.getElementById('serviciosGrid');
+        this.prevBtn = document.getElementById('prevServices');
+        this.nextBtn = document.getElementById('nextServices');
+        this.indicators = document.querySelectorAll('.indicator-dot');
+        this.carousel = document.querySelector('.servicios-carousel');
+        
+        this.currentPosition = 0;
+        this.slideWidth = 320; // Ancho de cada carta + gap
+        this.totalSlides = 6; // Total de servicios
+        this.isInfinite = false; // Activar modo infinito
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.grid || !this.prevBtn || !this.nextBtn) return;
+        
+        // Event listeners
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        // Indicadores
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+        
+        // Auto-play
+        this.startAutoPlay();
+        
+        // Pausar en hover
+        this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+        this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+        
+        // Touch/swipe support
+        this.addTouchSupport();
+        
+        // Actualizar estado inicial
+        this.updateControls();
+    }
+    
+    prevSlide() {
+        this.currentPosition -= this.slideWidth;
+        this.updatePosition();
+    }
+    
+    nextSlide() {
+        this.currentPosition += this.slideWidth;
+        this.updatePosition();
+    }
+    
+    goToSlide(slideIndex) {
+        this.currentPosition = slideIndex * this.slideWidth;
+        this.updatePosition();
+    }
+    
+    updatePosition() {
+        // Aplicar transición suave
+        this.grid.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        this.grid.style.transform = `translateX(-${this.currentPosition}px)`;
+        
+        this.updateControls();
+        this.updateIndicators();
+    }
+    
+    updateControls() {
+        // En modo infinito, nunca deshabilitar los botones
+        this.prevBtn.disabled = false;
+        this.nextBtn.disabled = false;
+    }
+    
+    updateIndicators() {
+        const currentSlide = Math.round(this.currentPosition / this.slideWidth);
+        this.indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+            this.autoPlayInterval = 4;
+        }
+    }
+    
+    addTouchSupport() {
+        let startX = 0;
+        let endX = 0;
+        
+        this.grid.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        this.grid.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            this.handleSwipe(startX, endX);
+        });
+    }
+    
+    handleSwipe(startX, endX) {
+        const threshold = 50;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                this.nextSlide(); // Swipe left - next
+            } else {
+                this.prevSlide(); // Swipe right - prev
+            }
+        }
+    }
+}
+
+// Inicializar carrusel cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', () => {
+    new ServiciosCarousel();
+});
+
 console.log('🦷 Dra. Maritza Alcedo - Website loaded successfully!');
 console.log('💡 Tip: Try the Konami code for a surprise! ⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️BA');
