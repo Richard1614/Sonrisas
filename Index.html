@@ -23,7 +23,7 @@
                 <li><a href="#casos">Casos Clínicos</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#testimonios">Testimonios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contacto" class="Ct">Contacto</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
@@ -62,12 +62,13 @@
     <section class="casos-clinicos" id="casos">
         <div class="container">
             <div class="section-header">
+                <br>
                 <span class="section-tag">Experiencia</span>
                 <h2>Casos Clínicos</h2>
                 <p>Contamos con un servicio especializado exclusivo de acuerdo a la necesidad de nuestros pacientes, con más de 12 años de experiencia que respaldan nuestro trabajo.</p>
             </div>
             <div class="casos-grid">
-                <div class="caso-card card-3d">
+                <div class="caso-card ">
                     <div class="caso-icon">
                         <i class="fas fa-tooth"></i>
                     </div>
@@ -75,7 +76,7 @@
                     <p>Tratamientos personalizados para alinear tu sonrisa perfectamente.</p>
                     <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="caso-card card-3d">
+                <div class="caso-card ">
                     <div class="caso-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -83,13 +84,34 @@
                     <p>Diseño de sonrisa con las últimas técnicas y materiales.</p>
                     <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="caso-card card-3d">
+                <div class="caso-card ">
                     <div class="caso-icon">
                         <i class="fas fa-procedures"></i>
                     </div>
                     <h3>Sedación Consciente</h3>
                     <p>Procedimientos cómodos y sin dolor con sedación controlada.</p>
                     <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <br>
+             <!-- Video automático -->
+             <div class="servicios-video">
+                <div class="servicios-video-content">
+                    <h3>Conoce mas sobre nosotros</h3>
+                    <p>Descubre la tecnología de vanguardia que utilizamos para brindarte el mejor cuidado dental.</p>
+                    <div class="video-container">
+                        <video class="auto-video" autoplay muted loop playsinline>
+                            <source src="6006694_Happy_Positive_3840x2160.mp4" type="video/mp4">
+                            <source src="" type="video/mp4">
+                            Tu navegador no soporta el elemento video.
+                        </video>
+                        <div class="video-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">
+                        Ver Más Videos <i class="fas fa-play"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -99,6 +121,7 @@
     <section class="servicios" id="servicios">
         <div class="container">
             <div class="section-header">
+                <br>
                 <span class="section-tag">Calidad</span>
                 <h2>Servicios</h2>
                 <p>Nuestros clientes nos respaldan por brindar un excelente servicio con equipos de primera y los mejores especialistas.</p>
@@ -107,42 +130,42 @@
                 <div class="servicios-container">
                     <div class="servicios-carousel">
                         <div class="servicios-grid" id="serviciosGrid">
-                            <div class="servicio-item card-3d">
+                            <div class="servicio-item ">
                                 <div class="servicio-icon">
-                                    <i class="fas fa-shield-alt"></i>
+                                    <i class="fa-solid fa-tablets""></i>
                                 </div>
                                 <h3>Implantes Dentales</h3>
                                 <p>Reemplazo permanente de piezas dentales con tecnología avanzada.</p>
                             </div>
-                            <div class="servicio-item card-3d">
+                            <div class="servicio-item ">
                                 <div class="servicio-icon">
                                     <i class="fas fa-smile"></i>
                                 </div>
                                 <h3>Blanqueamiento</h3>
                                 <p>Sonrisa más blanca y brillante con tratamientos profesionales.</p>
                             </div>
-                            <div class="servicio-item card-3d">
+                            <div class="servicio-item ">
                                 <div class="servicio-icon">
                                     <i class="fas fa-x-ray"></i>
                                 </div>
                                 <h3>Radiología Digital</h3>
                                 <p>Diagnóstico preciso con la última tecnología en imagenología.</p>
                             </div>
-                            <div class="servicio-item card-3d">
+                            <div class="servicio-item ">
                                 <div class="servicio-icon">
                                     <i class="fas fa-hand-holding-medical"></i>
                                 </div>
                                 <h3>Periodoncia</h3>
                                 <p>Cuidado especializado de encías y prevención de enfermedades.</p>
                             </div>
-                            <div class="servicio-item card-3d">
+                            <div class="servicio-item ">
                                 <div class="servicio-icon">
                                     <i class="fas fa-teeth"></i>
                                 </div>
                                 <h3>Rehabilitación Oral</h3>
                                 <p>Restauración completa de funcionalidad y estética dental.</p>
                             </div>
-                            <div class="servicio-item card-3d">
+                            <div class="servicio-item ">
                                 <div class="servicio-icon">
                                     <i class="fas fa-user-md"></i>
                                 </div>
@@ -168,27 +191,6 @@
                         <span class="indicator-dot" data-slide="1"></span>
                         <span class="indicator-dot" data-slide="2"></span>
                         <span class="indicator-dot" data-slide="3"></span>
-                    </div>
-                </div>
-                
-                <!-- Video automático -->
-                <div class="servicios-video">
-                    <div class="servicios-video-content">
-                        <h3>Conoce mas sobrenosotros</h3>
-                        <p>Descubre la tecnología de vanguardia que utilizamos para brindarte el mejor cuidado dental.</p>
-                        <div class="video-container">
-                            <video class="auto-video" autoplay muted loop playsinline>
-                                <source src="6006694_Happy_Positive_3840x2160.mp4" type="video/mp4">
-                                <source src="" type="video/mp4">
-                                Tu navegador no soporta el elemento video.
-                            </video>
-                            <div class="video-overlay">
-                                <i class="fas fa-play-circle"></i>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" style="margin-top: 1rem;">
-                            Ver Más Videos <i class="fas fa-play"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -254,17 +256,18 @@
     <section class="testimonios" id="testimonios">
         <div class="container">
             <div class="section-header">
+                <br>
                 <span class="section-tag">Opiniones</span>
                 <h2>Testimonios</h2>
             </div>
             <div class="testimonios-slider">
                 <div class="testimonio-card  active">
                     <div class="quote-icon">
-                        <i class="fas fa-quote-left">NN</i>
+                        <i class="fas fa-quote-left"></i>
                     </div>
                     <p class="testimonio-text">"Excelente atención y profesionalismo. El Club Sonriisas me ayudó a recuperar mi sonrisa con mucha paciencia y dedicación. Los resultados son increíbles."</p>
                     <div class="testimonio-autor">
-                        <div class="autor-avatar">MA</div>
+                        <div class="autor-avatar">NN</div>
                         <div>
                             <h4>Nora Nataly</h4>
                             <div class="rating">
@@ -365,9 +368,10 @@
     <section class="contacto" id="contacto">
         <div class="container">
             <div class="section-header">
+                <br>
                 <span class="section-tag">Comunícate</span>
                 <h2>Reserva tu cita</h2>
-                <p>Rellene los campos</p>
+                <p>Complete los campos</p>
             </div>
             <form class="contact-form">
                 <div class="form-row">

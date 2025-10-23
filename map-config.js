@@ -16,7 +16,7 @@ const MAP_CONFIG = {
     // Información de la clínica
     clinicInfo: {
         name: 'Club Sonrisas',
-        doctor: 'Dra. Maritza Alcedo',
+        doctor: 'Time to find out',
         address: 'Mall del Sur, Local 123',
         city: 'Chorrillos, Lima',
         phone: '+51 999 999 999',
