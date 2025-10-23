@@ -5,8 +5,8 @@ const MAP_CONFIG = {
     // Coordenadas de la clínica (latitud, longitud)
     // Mall del Sur, Lima, Perú
     location: {
-        lat: -12.2000,  // Latitud del Mall del Sur
-        lng: -76.9500   // Longitud del Mall del Sur
+        lat: -12.10989738647015,  // Latitud del Mall del Sur
+        lng: -76.9827451170958   // Longitud del Mall del Sur
     },
     
     // Configuración del mapa
@@ -15,11 +15,11 @@ const MAP_CONFIG = {
     
     // Información de la clínica
     clinicInfo: {
-        name: 'Club Sonrisas',
-        doctor: 'Time to find out',
-        address: 'Mall del Sur, Local 123',
-        city: 'Chorrillos, Lima',
-        phone: '+51 999 999 999',
+        name: 'Club Sonrisa',
+        doctor: 'Especialistas en salud dental',
+        address: 'Av. Primavera 903 oficina 504',
+        city: 'Chacarilla, San Borja',
+        phone: '+51 970 800 813',
         email: 'info@draalcedo.com'
     },
     
