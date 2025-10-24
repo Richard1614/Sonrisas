@@ -1630,55 +1630,55 @@ body.loading { overflow: hidden; }
         display: block;
     }
     
+    /* Hero: evitar ancho fijo y mejorar lectura en móvil */
+    .hero-content { padding: 1.5rem; }
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        width: auto;
+        max-width: 100%;
+        line-height: 1.2;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .hero-subtitle {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        text-align: center;
     }
     
     .hero-buttons {
         flex-direction: column;
+        align-items: center;
     }
     
+    /* Inst/Ubicación: una columna y ancho completo */
     .instalaciones-content,
     .ubicacion-content,
     .servicios-content {
         gap: 3rem;
+        grid-template-columns: 1fr;
+        justify-items: stretch;
     }
+    .instalaciones-image .image-wrapper { height: 300px; }
+    .gallery-container { width: 100%; }
+    .image-wrapper img { width: 100%; height: 100%; transform: none; }
     
-    .servicios-carousel {
-        padding: 1.5rem;
-    }
+    .leaflet-map { width: 100%; height: 380px; }
     
-    .servicios-grid {
-        gap: 1.5rem;
-    }
+    .servicios-carousel { padding: 1.5rem; }
     
-    .servicio-item {
-        width: 280px;
-        min-height: 300px;
-    }
+    .servicios-grid { gap: 1.5rem; }
     
-    .carousel-controls {
-        padding: 0 0.5rem;
-    }
+    .servicio-item { width: 280px; min-height: 300px; }
     
-    .carousel-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-    }
+    .carousel-controls { padding: 0 0.5rem; }
     
-    .servicios-video {
-        min-height: 350px;
-        margin-top: 2rem;
-    }
+    .carousel-btn { width: 50px; height: 50px; font-size: 1.2rem; }
     
-    .video-container {
-        height: 180px;
-    }
+    .servicios-video { min-height: 350px; margin-top: 2rem; }
+    
+    .video-container { height: 180px; }
 }
 
 @media (max-width: 480px) {
