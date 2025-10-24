@@ -902,8 +902,78 @@ class ServiciosCarousel {
     }
 }
 
-// Inicializar carrusel cuando el DOM esté listo
+// --- Preloader & media readiness ---
+function waitForVideoReady(video) {
+    return new Promise((resolve) => {
+        if (!video) return resolve();
+        const onReady = () => resolve();
+        video.addEventListener('canplaythrough', onReady, { once: true });
+        // Intentar autoplay con mute y playsinline
+        video.muted = true;
+        video.playsInline = true;
+        const tryPlay = video.play();
+        if (tryPlay && typeof tryPlay.then === 'function') {
+            tryPlay.then(() => resolve()).catch(() => resolve());
+        }
+        // Fallback por si no dispara evento
+        setTimeout(() => resolve(), 1500);
+    });
+}
+
+function waitForServiceMedia() {
+    const mediaBlocks = document.querySelectorAll('.servicio-media');
+    if (mediaBlocks.length === 0) return Promise.resolve();
+
+    const promises = Array.from(mediaBlocks).map(block => {
+        const img = block.querySelector('img');
+        if (!img) return Promise.resolve();
+        // Lazy: si hay data-src, asignar a src
+        const dataSrc = img.getAttribute('data-src');
+        if (dataSrc) img.src = dataSrc;
+        return new Promise(res => {
+            if (img.complete && img.naturalWidth > 0) {
+                block.classList.add('loaded');
+                return res();
+            }
+            img.addEventListener('load', () => { block.classList.add('loaded'); res(); }, { once: true });
+            img.addEventListener('error', () => { block.classList.add('loaded'); res(); }, { once: true });
+            // Fallback si no hay src definido
+            setTimeout(() => { block.classList.add('loaded'); res(); }, 1200);
+        });
+    });
+    return Promise.all(promises);
+}
+
+function hidePreloader() {
+    const pre = document.getElementById('preloader');
+    if (pre) pre.classList.add('hidden');
+    document.body.classList.remove('loading');
+}
+
+// Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
+    // Marcar estado de carga
+    document.body.classList.add('loading');
+
+    const video = document.getElementById('autoVideo');
+    const ready = Promise.all([
+        waitForVideoReady(video),
+        waitForServiceMedia(),
+    ]);
+
+    // Timeout de seguridad para no bloquear
+    const timeout = new Promise(res => setTimeout(res, 3000));
+
+    Promise.race([ready, timeout]).finally(() => {
+        hidePreloader();
+        // Asegurar play del video tras mostrar
+        if (video) {
+            const p = video.play();
+            if (p && typeof p.catch === 'function') p.catch(() => {});
+        }
+    });
+
+    // Iniciar carrusel
     new ServiciosCarousel();
 });
 
