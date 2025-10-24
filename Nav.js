@@ -892,7 +892,7 @@ class ServiciosCarousel {
             if (!dragging) return;
             const endX = e.changedTouches[0].clientX;
             const diff = startX - endX;
-            const threshold = 40;
+            const threshold = 30;
             if (Math.abs(diff) > threshold) {
                 diff > 0 ? this.next() : this.prev();
             }

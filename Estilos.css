@@ -1080,9 +1080,26 @@ body.loading { overflow: hidden; }
     z-index: 2;
 }
 @media (max-width: 640px) {
-    .servicio-item.active { transform: translateY(-6px) scale(1.03); }
-    .servicio-item.prev { transform: rotateY(16deg) translateX(-12px) scale(0.97); }
-    .servicio-item.next { transform: rotateY(-16deg) translateX(12px) scale(0.97); }
+    .servicio-item.active { transform: translateY(-4px) scale(1.02); }
+    .servicio-item.prev { transform: rotateY(10deg) translateX(-8px) scale(0.985); }
+    .servicio-item.next { transform: rotateY(-10deg) translateX(8px) scale(0.985); }
+}
+
+/* Dots más claros en móvil */
+@media (max-width: 480px) {
+    .indicator-dot { width: 12px; height: 12px; background: rgba(0,0,0,.15); }
+    .indicator-dot.active { background: #52A2B4; transform: scale(1.15); }
+}
+
+/* Controles táctiles más grandes en móvil */
+@media (max-width: 480px) {
+    .carousel-btn { width: 56px; height: 56px; font-size: 1.1rem; }
+}
+
+/* Reducir movimiento si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    .servicio-item, .carousel-btn, .indicator-dot, .video-container { transition: none !important; }
+    .servicio-item, .servicio-item.active, .servicio-item.prev, .servicio-item.next { transform: none !important; }
 }
 
 /* Cartas: colores pastel por servicio (override) */
