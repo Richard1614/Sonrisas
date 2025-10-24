@@ -676,118 +676,229 @@ function setPredefinedLocation(locationKey) {
     }
 }
 
-// Cinta horizontal profesional de servicios
+// Cinta de servicios: modo centrado, loop infinito y avance por ítem
 class ServiciosCarousel {
     constructor() {
         this.grid = document.getElementById('serviciosGrid');
+        this.carousel = document.querySelector('.servicios-carousel');
         this.prevBtn = document.getElementById('prevServices');
         this.nextBtn = document.getElementById('nextServices');
-        this.indicators = document.querySelectorAll('.indicator-dot');
-        this.carousel = document.querySelector('.servicios-carousel');
-        
-        this.currentPosition = 0;
-        this.slideWidth = 320; // Ancho de cada carta + gap
-        this.totalSlides = 6; // Total de servicios
-        this.isInfinite = false; // Activar modo infinito
-        
+        this.indicatorsWrapper = document.getElementById('carouselIndicators');
+
+        this.items = [];
+        this.itemWidth = 0;
+        this.gap = 0;
+        this.index = 0; // índice actual incluyendo clones
+        this.cloneBlock = 0; // cantidad de items reales clonados a cada lado (bloque completo)
+        this.transitionMs = 600;
+        this.autoPlayInterval = null;
+
         this.init();
     }
-    
+
     init() {
-        if (!this.grid || !this.prevBtn || !this.nextBtn) return;
-        
-        // Event listeners
-        this.prevBtn.addEventListener('click', () => this.prevSlide());
-        this.nextBtn.addEventListener('click', () => this.nextSlide());
-        
-        // Indicadores
-        this.indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => this.goToSlide(index));
-        });
-        
-        // Auto-play
+        if (!this.grid || !this.carousel || !this.prevBtn || !this.nextBtn || !this.indicatorsWrapper) return;
+        this.setup();
+        this.bind();
         this.startAutoPlay();
-        
-        // Pausar en hover
+    }
+
+    setup() {
+        this.stopAutoPlay();
+        this.grid.classList.add('no-transition');
+        this.grid.style.transform = 'translateX(0)';
+
+        // Eliminar clones previos
+        this.grid.querySelectorAll('[data-clone="true"]').forEach(el => el.remove());
+
+        // Medidas y elementos
+        const first = this.grid.querySelector('.servicio-item');
+        if (!first) return;
+        const gridStyles = getComputedStyle(this.grid);
+        const gapStr = gridStyles.getPropertyValue('gap') || gridStyles.getPropertyValue('column-gap') || '0px';
+        this.gap = parseFloat(gapStr) || 0;
+        this.itemWidth = first.getBoundingClientRect().width;
+        this.items = Array.from(this.grid.querySelectorAll('.servicio-item'));
+
+        // Clonar bloque completo a ambos lados para loop perfecto
+        this.cloneBlock = this.items.length;
+        const headClones = this.items.map(n => this.cloneItem(n));
+        const tailClones = this.items.map(n => this.cloneItem(n));
+        // Prepend head clones
+        headClones.forEach(n => this.grid.insertBefore(n, this.grid.firstChild));
+        // Append tail clones
+        tailClones.forEach(n => this.grid.appendChild(n));
+
+        // Iniciar en la primera carta real alineada a la izquierda
+        this.index = this.cloneBlock; // apunta al primer real
+        this.jumpToIndex(this.index);
+
+        // Indicadores por ítem
+        this.renderIndicators();
+        this.updateActiveItem(true); // arranque: ocultar previo para que se vea natural a la izquierda
+        this.updateIndicators();
+
+        requestAnimationFrame(() => this.grid.classList.remove('no-transition'));
+    }
+
+    cloneItem(node) {
+        const c = node.cloneNode(true);
+        c.setAttribute('data-clone', 'true');
+        return c;
+    }
+
+    bind() {
+        this.prevBtn.addEventListener('click', () => this.prev());
+        this.nextBtn.addEventListener('click', () => this.next());
         this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
         this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
-        
-        // Touch/swipe support
         this.addTouchSupport();
-        
-        // Actualizar estado inicial
-        this.updateControls();
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => this.setup(), 200);
+        });
+
+        this.grid.addEventListener('transitionend', () => this.onTransitionEnd());
     }
-    
-    prevSlide() {
-        this.currentPosition -= this.slideWidth;
-        this.updatePosition();
+
+    // Posición para alinear el item en índice actual
+    currentTranslate() {
+        const step = this.itemWidth + this.gap;
+        const styles = getComputedStyle(this.carousel);
+        const paddingLeft = parseFloat(styles.getPropertyValue('padding-left')) || 0;
+        // Alinear el ítem activo al borde izquierdo interno (respeta padding-left)
+        return paddingLeft - this.index * step;
     }
-    
-    nextSlide() {
-        this.currentPosition += this.slideWidth;
-        this.updatePosition();
+
+    applyTransform() {
+        this.grid.style.transition = `transform ${this.transitionMs}ms cubic-bezier(0.4, 0, 0.2, 1)`;
+        this.grid.style.transform = `translateX(${this.currentTranslate()}px)`;
     }
-    
-    goToSlide(slideIndex) {
-        this.currentPosition = slideIndex * this.slideWidth;
-        this.updatePosition();
+
+    jumpToIndex(i) {
+        this.grid.classList.add('no-transition');
+        this.index = i;
+        this.grid.style.transform = `translateX(${this.currentTranslate()}px)`;
+        void this.grid.offsetHeight; // reflow
+        this.grid.classList.remove('no-transition');
     }
-    
-    updatePosition() {
-        // Aplicar transición suave
-        this.grid.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        this.grid.style.transform = `translateX(-${this.currentPosition}px)`;
-        
-        this.updateControls();
+
+    next() {
+        this.index += 1; // avanzar por ítem
+        this.applyTransform();
+        this.updateActiveItem();
         this.updateIndicators();
     }
-    
-    updateControls() {
-        // En modo infinito, nunca deshabilitar los botones
-        this.prevBtn.disabled = false;
-        this.nextBtn.disabled = false;
+
+    prev() {
+        this.index -= 1; // retroceder por ítem
+        this.applyTransform();
+        this.updateActiveItem();
+        this.updateIndicators();
     }
-    
+
+    onTransitionEnd() {
+        const totalItems = this.grid.querySelectorAll('.servicio-item').length; // con clones
+        const realCount = this.items.length;
+        // Si pasamos del bloque real al final clonado, saltar al real equivalente
+        if (this.index >= this.cloneBlock + realCount) {
+            this.jumpToIndex(this.cloneBlock + (this.index - (this.cloneBlock + realCount)));
+        }
+        // Si pasamos antes del bloque real hacia clones del inicio, saltar al real equivalente
+        if (this.index < this.cloneBlock) {
+            this.jumpToIndex(this.cloneBlock + realCount + (this.index - this.cloneBlock));
+        }
+    }
+
+    // Dots por ítem real
+    renderIndicators() {
+        this.indicatorsWrapper.innerHTML = ''; /* this.items.length; i++ */ /* esa es la formula para automatiizar */
+        for (let i = 0; i < this.items.length; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'indicator-dot' + (i === 0 ? ' active' : '');
+            dot.dataset.slide = String(i);
+            dot.addEventListener('click', () => this.goToRealIndex(i));
+            this.indicatorsWrapper.appendChild(dot);
+        }
+    }
+
+    goToRealIndex(realIdx) {
+        const currentReal = this.realIndex();
+        const diff = realIdx - currentReal;
+        this.index += diff; // mover respecto al índice actual
+        this.applyTransform();
+        this.updateActiveItem();
+        this.updateIndicators();
+    }
+
+    realIndex() {
+        // índice dentro del bloque real 0..n-1
+        const realCount = this.items.length;
+        let r = (this.index - this.cloneBlock) % realCount;
+        if (r < 0) r += realCount;
+        return r;
+    }
+
     updateIndicators() {
-        const currentSlide = Math.round(this.currentPosition / this.slideWidth);
-        this.indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === currentSlide);
-        });
+        const active = this.realIndex();
+        const dots = this.indicatorsWrapper.querySelectorAll('.indicator-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === active));
     }
-    
+
+    updateActiveItem(hidePrevOnce = false) {
+        const all = this.grid.querySelectorAll('.servicio-item');
+        // Marcar todo como oculto inicialmente
+        all.forEach(el => el.classList.remove('active', 'prev', 'next'));
+        all.forEach(el => el.classList.add('hidden'));
+
+        const current = all[this.index];
+        if (current) {
+            current.classList.add('active');
+            current.classList.remove('hidden');
+            let prevEl = all[this.index - 1];
+            let nextEl = all[this.index + 1];
+            if (!prevEl) prevEl = all[all.length - 1];
+            if (!nextEl) nextEl = all[0];
+            // En el arranque podemos ocultar el previo una sola vez para que la primera se vea pegada a la izquierda
+            if (!hidePrevOnce && prevEl) { prevEl.classList.add('prev'); prevEl.classList.remove('hidden'); }
+            if (nextEl) { nextEl.classList.add('next'); nextEl.classList.remove('hidden'); }
+        }
+    }
+
+    startAutoPlay() {
+        this.stopAutoPlay();
+        this.autoPlayInterval = setInterval(() => this.next(), 4000);
+    }
+
     stopAutoPlay() {
         if (this.autoPlayInterval) {
             clearInterval(this.autoPlayInterval);
-            this.autoPlayInterval = 4;
+            this.autoPlayInterval = null;
         }
     }
-    
+
     addTouchSupport() {
         let startX = 0;
-        let endX = 0;
-        
+        let dragging = false;
         this.grid.addEventListener('touchstart', (e) => {
+            if (!e.touches || e.touches.length === 0) return;
             startX = e.touches[0].clientX;
-        });
-        
+            dragging = true;
+            this.stopAutoPlay();
+        }, { passive: true });
         this.grid.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].clientX;
-            this.handleSwipe(startX, endX);
-        });
-    }
-    
-    handleSwipe(startX, endX) {
-        const threshold = 50;
-        const diff = startX - endX;
-        
-        if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
-                this.nextSlide(); // Swipe left - next
-            } else {
-                this.prevSlide(); // Swipe right - prev
+            if (!dragging) return;
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            const threshold = 40;
+            if (Math.abs(diff) > threshold) {
+                diff > 0 ? this.next() : this.prev();
             }
-        }
+            dragging = false;
+            this.startAutoPlay();
+        });
     }
 }
 

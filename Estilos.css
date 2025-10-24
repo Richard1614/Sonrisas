@@ -609,7 +609,7 @@ html {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
     backdrop-filter: blur(10px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    padding: 2rem 3.5rem; /* más espacio lateral para que asomen vecinos */
 }
 
 .servicios-grid {
@@ -930,7 +930,7 @@ html {
     flex-direction: column;
     justify-content: space-between;
     min-height: 320px;
-    width: 300px;
+    width: 300px; /* base desktop */
     flex-shrink: 0;
     transition: all 0.3s ease;
     position: relative;
@@ -974,7 +974,7 @@ html {
     z-index: 2;
 }
 
-.servicio-item:hover .servicio-icon {
+.servicio-item.active:hover .servicio-icon {
     transform: scale(1.15) rotateY(360deg);
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
 }
@@ -998,6 +998,91 @@ html {
     align-items: center;
     justify-content: center;
 }
+
+/* Carrusel centrado - efecto giratorio y resalte del elemento activo */
+.servicios-carousel {
+    perspective: 1200px;
+}
+.servicios-grid {
+    align-items: center;
+}
+.servicio-item { 
+    transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease; 
+    opacity: 0.6;
+    transform-origin: center;
+    z-index: 1;
+}
+
+/* Responsive para asegurar vecinos visibles */
+@media (max-width: 1024px) {
+    .servicios-carousel { padding: 2rem 3rem; }
+}
+@media (max-width: 820px) {
+    .servicios-carousel { padding: 1.5rem 2.5rem; }
+    .servicios-grid { gap: 1.25rem; }
+    .servicio-item { width: 280px; }
+}
+@media (max-width: 640px) {
+    .servicios-carousel { padding: 1.25rem 2rem; }
+    .servicios-grid { gap: 1rem; }
+    .servicio-item { width: 260px; }
+}
+@media (max-width: 400px) {
+    .servicios-carousel { padding: 1rem 1.5rem; }
+    .servicios-grid { gap: 0.75rem; }
+    .servicio-item { width: 230px; }
+}
+.servicio-item.active { 
+    transform: translateY(-8px) scale(1.06) rotateY(0deg);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+    opacity: 1;
+    z-index: 3;
+}
+.servicio-item.prev {
+    transform: rotateY(22deg) translateX(-20px) scale(0.96);
+    opacity: 0.75;
+    z-index: 2;
+}
+.servicio-item.next {
+    transform: rotateY(-22deg) translateX(20px) scale(0.96);
+    opacity: 0.75;
+    z-index: 2;
+}
+@media (max-width: 640px) {
+    .servicio-item.active { transform: translateY(-6px) scale(1.03); }
+    .servicio-item.prev { transform: rotateY(16deg) translateX(-12px) scale(0.97); }
+    .servicio-item.next { transform: rotateY(-16deg) translateX(12px) scale(0.97); }
+}
+
+/* Cartas: colores pastel por servicio (override) */
+.servicio-item.s-1 { background: linear-gradient(135deg, #fde2e4 0%, #fff5f6 100%) !important; color: #0f172a; }
+.servicio-item.s-2 { background: linear-gradient(135deg, #e2f0ff 0%, #f5faff 100%) !important; color: #0f172a; }
+.servicio-item.s-3 { background: linear-gradient(135deg, #e7f8f3 0%, #f3fffb 100%) !important; color: #0f172a; }
+.servicio-item.s-4 { background: linear-gradient(135deg, #fff3cd 0%, #fff9e6 100%) !important; color: #0f172a; }
+.servicio-item.s-5 { background: linear-gradient(135deg, #ede7f6 0%, #f6f2ff 100%) !important; color: #0f172a; }
+.servicio-item.s-6 { background: linear-gradient(135deg, #fce4ec 0%, #fff1f6 100%) !important; color: #0f172a; }
+
+.servicio-item.s-1 .servicio-icon,
+.servicio-item.s-2 .servicio-icon,
+.servicio-item.s-3 .servicio-icon,
+.servicio-item.s-4 .servicio-icon,
+.servicio-item.s-5 .servicio-icon,
+.servicio-item.s-6 .servicio-icon { color: #0f172a; }
+
+/* Solo la carta activa tiene hover extra */
+.servicio-item.active:hover {
+    transform: translateY(-12px) scale(1.08) rotateY(0deg);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+}
+
+/* Ocultar cartas no visibles sin romper el flujo */
+.servicio-item.hidden { opacity: 0; pointer-events: none; }
+/* Ocultar clones cuando no son vecinos ni activos (evita percibir duplicados) */
+.servicio-item[data-clone="true"]:not(.prev):not(.active):not(.next) { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Uniformidad visual extra */
+.servicio-item h3 { line-height: 1.2; min-height: 1.8rem; }
+.servicio-item p { line-height: 1.5; }
 
 /* Instalaciones */
 .instalaciones {
@@ -1556,10 +1641,11 @@ html {
         gap: 1rem;
     }
     
-    .servicio-item {
+    .servicio-item{
         width: 250px;
         min-height: 280px;
         padding: 2rem 1.5rem;
+        background-color: black;
     }
     
     .carousel-btn {
