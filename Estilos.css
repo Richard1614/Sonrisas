@@ -1221,7 +1221,7 @@ body.loading { overflow: hidden; }
 }
 
 .testimonio-card {
-    min-width: 280px;
+    min-width: 260px;
     background: white;
     padding: 2.5rem;
     border-radius: 20px;
@@ -1229,6 +1229,7 @@ body.loading { overflow: hidden; }
     position: relative;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    width: 350px;
 }
 
 .testimonio-card.active {
