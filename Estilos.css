@@ -1004,6 +1004,27 @@ body.loading { overflow: hidden; }
     position: relative;
     z-index: 2;
 }
+.servicio-icon .icon1 { /* Para cambiar cosas en los iconos */
+    width: 4.4rem;
+    height: 4.4rem;
+    display: inline-block;
+    background-color: transparent;
+    border-color: black;
+    position: relative;
+    top: 10px;
+    
+}
+
+.servicio-icon .icon2 { /* Para cambiar cosas en los iconos */
+    width: 4rem;
+    height: 4rem;
+    display: inline-block;
+    background-color: transparent;
+    border-color: black;
+    position: relative;
+    top: 10px;
+    
+}
 
 .servicio-item.active:hover .servicio-icon {
     transform: scale(1.15) rotateY(360deg);
@@ -1608,6 +1629,13 @@ body.loading { overflow: hidden; }
     opacity: 0.8;
 }
 
+.icon1 {
+    background-color: black;
+    height: 50px;
+    width: 50px;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
@@ -1615,7 +1643,7 @@ body.loading { overflow: hidden; }
         top: 70px;
         left: -100%;
         flex-direction: column;
-        background: white;
+        background: #52A2B4; /* color de fondo para móvil */
         width: 100%;
         padding: 2rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -1629,6 +1657,7 @@ body.loading { overflow: hidden; }
     .menu-toggle {
         display: block;
     }
+    
     
     /* Hero: evitar ancho fijo y mejorar lectura en móvil */
     .hero-content { padding: 1.5rem; }
