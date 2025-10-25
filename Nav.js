@@ -911,6 +911,8 @@ function waitForVideoReady(video) {
         // Intentar autoplay con mute y playsinline
         video.muted = true;
         video.playsInline = true;
+        video.setAttribute('playsinline', '');
+        video.setAttribute('webkit-playsinline', '');
         const tryPlay = video.play();
         if (tryPlay && typeof tryPlay.then === 'function') {
             tryPlay.then(() => resolve()).catch(() => resolve());
@@ -918,6 +920,52 @@ function waitForVideoReady(video) {
         // Fallback por si no dispara evento
         setTimeout(() => resolve(), 1500);
     });
+}
+
+// Refuerzo de loop infinito y reintentos en móviles/hosting estático
+function ensureVideoLooping(video) {
+    if (!video) return;
+    // Asegurar atributos de compatibilidad
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const safePlay = () => {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+    };
+
+    // Reiniciar al finalizar (por si el atributo loop falla)
+    video.addEventListener('ended', () => {
+        try { video.currentTime = 0; } catch {}
+        safePlay();
+    });
+
+    // Si se queda esperando o se suspende la descarga, reintentar
+    ['stalled','suspend','waiting','error'].forEach(evt => {
+        video.addEventListener(evt, () => {
+            // pequeño delay para evitar bucles agresivos
+            setTimeout(safePlay, 200);
+        });
+    });
+
+    // Cerca del final, forzar wrap para evitar un frame congelado
+    video.addEventListener('timeupdate', () => {
+        if (!isFinite(video.duration) || video.duration === 0) return;
+        if (video.duration - video.currentTime < 0.15) {
+            try { video.currentTime = 0; } catch {}
+        }
+    });
+
+    // Al recuperar la visibilidad, reintentar play
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) safePlay();
+    });
+
+    // Primer arranque asegurado
+    safePlay();
 }
 
 function waitForServiceMedia() {
@@ -966,10 +1014,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     Promise.race([ready, timeout]).finally(() => {
         hidePreloader();
-        // Asegurar play del video tras mostrar
+        // Asegurar play del video y loop infinito tras mostrar
         if (video) {
-            const p = video.play();
-            if (p && typeof p.catch === 'function') p.catch(() => {});
+            ensureVideoLooping(video);
         }
     });
 
