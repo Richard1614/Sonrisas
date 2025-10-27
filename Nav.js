@@ -102,14 +102,9 @@ function goToIndex(idx) {
     if (!slider || !testimonios || testimonios.length === 0) return;
     const maxIdx = testimonios.length - 1;
     const clamped = Math.max(0, Math.min(idx, maxIdx));
-    const el = testimonios[clamped];
-    if (el && typeof el.scrollIntoView === 'function') {
-        el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-    } else {
-        // Fallback
-        const left = clamped * stepSize();
-        slider.scrollTo({ left, behavior: 'smooth' });
-    }
+    // Desplazar solo dentro del contenedor, sin mover la ventana
+    const left = clamped * stepSize();
+    slider.scrollTo({ left, behavior: 'smooth' });
     if (clamped === 0) slider.scrollLeft = 0; // asegurar inicio exacto
     currentTestimonio = clamped;
     updateUI();
