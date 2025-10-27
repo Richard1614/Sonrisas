@@ -571,6 +571,22 @@ html {
     gap: 1rem;
 }
 
+.card-link2 {
+    color:  #000000;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    justify-content: center;
+}
+
+.card-link2:hover {
+    gap: 1rem;
+    text-align: center;
+}
+
 /* Servicios */
 .servicios {
     padding: 6rem 0;
@@ -995,6 +1011,8 @@ body.loading { overflow: hidden; }
 .servicio-item:nth-child(4) { background: #D69FA2; color: white; }
 .servicio-item:nth-child(5) { background: #98979A; color: white; }
 .servicio-item:nth-child(6) { background: #29CEB3; color: white; }
+.servicio-item.s-7 { background: #AEE7F0 !important; color: rgb(0, 0, 0); }
+.servicio-item.s-8 { background: #B8EBD0 !important; color: #0f172a !important; }
 
 .servicio-icon {
     font-size: 3.5rem;
@@ -1252,6 +1270,15 @@ body.loading { overflow: hidden; }
     scroll-behavior: smooth;
     padding: 2rem 0;
     scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    --end-spacer: 0px; /* valor por defecto, JS lo ajusta */
+}
+
+/* Espaciador al final para que la última tarjeta pueda alinear al inicio */
+.testimonios-slider::after {
+    content: "";
+    flex: 0 0 var(--end-spacer);
 }
 
 .testimonios-slider::-webkit-scrollbar {
@@ -1259,7 +1286,7 @@ body.loading { overflow: hidden; }
 }
 
 .testimonio-card {
-    min-width: 260px;
+    min-width: 380px;
     background: white;
     padding: 2.5rem;
     border-radius: 20px;
@@ -1267,7 +1294,10 @@ body.loading { overflow: hidden; }
     position: relative;
     border: 2px solid transparent;
     transition: all 0.3s ease;
-    width: 350px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
 }
 
 .testimonio-card.active {
@@ -1283,16 +1313,19 @@ body.loading { overflow: hidden; }
 }
 
 .testimonio-text {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     line-height: 1.8;
     margin-bottom: 2rem;
     color: var(--text-color);
+    flex: 1;
+    min-height: 1px;
 }
 
 .testimonio-autor {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-top: auto;
 }
 
 .autor-avatar {
@@ -1306,6 +1339,14 @@ body.loading { overflow: hidden; }
     color: white;
     font-weight: 700;
     font-size: 1.2rem;
+    overflow: hidden; /* Recorta la imagen dentro del círculo */
+}
+
+.autor-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .testimonio-autor h4 {
@@ -1429,6 +1470,55 @@ body.loading { overflow: hidden; }
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Control botón Google Maps */
+.gmaps-control {
+    margin: 0 0 12px 12px;
+    z-index: 500; /* sobre el mapa */
+
+}
+/* Eliminar borde/caja por defecto del contenedor Leaflet */
+.gmaps-control.leaflet-bar {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    position: relative;
+    right: 25px;
+}
+.gmaps-control .gmaps-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 1;
+    min-height: 40px;
+    border: none;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.gmaps-control .gmaps-btn:hover {
+    transform: translateY(-1px);
+    background: #ffffff;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+.gmaps-control .gmaps-btn i {
+    font-size: 1rem;
+}
+.gmaps-control .gmaps-btn span {
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+/* Móvil: compactar y mostrar solo ícono */
+@media (max-width: 480px) {
+    .gmaps-control .gmaps-btn { padding: 10px; border-radius: 50%; }
+    .gmaps-control .gmaps-btn span { display: none; }
+}
+
 /* Personalización de controles del mapa */
 .leaflet-popup-content-wrapper {
     border-radius: 10px;
@@ -1454,11 +1544,6 @@ body.loading { overflow: hidden; }
     color: white;
     font-weight: bold;
     font-size: 14px;
-}
-
-.custom-marker::before {
-    content: '🦷';
-    font-size: 16px;
 }
 
 /* Contacto */

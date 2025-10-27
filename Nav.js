@@ -55,45 +55,173 @@ cards3D.forEach(card => {
     });
 });
 
-
-
-// Testimonials Slider
+// Testimonials Slider - horizontal ribbon with scroll
 let currentTestimonio = 0;
 const testimonios = document.querySelectorAll('.testimonio-card');
 const testimonialPrevBtn = document.querySelector('.slider-btn.prev');
 const testimonialNextBtn = document.querySelector('.slider-btn.next');
 const slider = document.querySelector('.testimonios-slider');
-
-function updateTestimonios() {
-    testimonios.forEach((testimonio, index) => {
-        testimonio.classList.remove('active');
-        if (index === currentTestimonio) {
-            testimonio.classList.add('active');
-            // Removed automatic scroll to prevent unwanted navigation
-            // testimonio.scrollIntoView({
-            //     behavior: 'smooth',
-            //     block: 'nearest',
-            //     inline: 'center'
-            // });
-        }
-    });
+let testimonialsReady = false; // evita que scroll inicial cambie al 2do
+// Crear contenedor de indicadores dinámicamente
+let testimonialIndicators = null;
+if (slider) {
+    testimonialIndicators = document.createElement('div');
+    testimonialIndicators.className = 'testimonial-indicators';
+    // insertar inmediatamente después del slider, antes de los controles de flechas
+    const controls = document.querySelector('.slider-controls');
+    if (controls && controls.parentNode) {
+        controls.parentNode.insertBefore(testimonialIndicators, controls);
+    } else {
+        slider.parentNode.appendChild(testimonialIndicators);
+    }
 }
 
-testimonialNextBtn.addEventListener('click', () => {
-    currentTestimonio = (currentTestimonio + 1) % testimonios.length;
-    updateTestimonios();
-});
+function getGapPx(el) {
+    const styles = getComputedStyle(el);
+    const gap = parseFloat(styles.getPropertyValue('gap') || styles.getPropertyValue('column-gap') || '0');
+    return isNaN(gap) ? 0 : gap;
+}
 
-testimonialPrevBtn.addEventListener('click', () => {
-    currentTestimonio = (currentTestimonio - 1 + testimonios.length) % testimonios.length;
-    updateTestimonios();
-});
+function stepSize() {
+    if (!testimonios || testimonios.length === 0) return 0;
+    const card = testimonios[0];
+    const rect = card.getBoundingClientRect();
+    return rect.width + getGapPx(slider);
+}
 
-// Auto-slide testimonials - DISABLED
-// setInterval(() => {
-//     currentTestimonio = (currentTestimonio + 1) % testimonios.length;
-//     updateTestimonios();
-// }, 5000);
+function updateUI() {
+    testimonios.forEach((card, idx) => card.classList.toggle('active', idx === currentTestimonio));
+    if (testimonialIndicators) {
+        const dots = testimonialIndicators.querySelectorAll('.t-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === currentTestimonio));
+    }
+    updateArrowState();
+}
+
+function goToIndex(idx) {
+    if (!slider || !testimonios || testimonios.length === 0) return;
+    const maxIdx = testimonios.length - 1;
+    const clamped = Math.max(0, Math.min(idx, maxIdx));
+    const el = testimonios[clamped];
+    if (el && typeof el.scrollIntoView === 'function') {
+        el.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    } else {
+        // Fallback
+        const left = clamped * stepSize();
+        slider.scrollTo({ left, behavior: 'smooth' });
+    }
+    if (clamped === 0) slider.scrollLeft = 0; // asegurar inicio exacto
+    currentTestimonio = clamped;
+    updateUI();
+}
+
+function scrollByCard(dir = 1) {
+    if (!testimonios || testimonios.length === 0) return;
+    const n = testimonios.length;
+    const target = (currentTestimonio + dir + n) % n; // navegación circular
+    goToIndex(target);
+}
+
+// Espaciador final: permite que el último ítem alinee al inicio (mejor que padding)
+function adjustEndPadding() {
+    if (!slider || !testimonios || testimonios.length === 0) return;
+    const last = testimonios[testimonios.length - 1];
+    const lastWidth = last.getBoundingClientRect().width;
+    const styles = getComputedStyle(slider);
+    const gap = parseFloat(styles.getPropertyValue('gap') || styles.getPropertyValue('column-gap') || '0') || 0;
+    // Espacio requerido para que el último pueda llegar a inline:start sin quedar cortado
+    const extra = slider.clientWidth - lastWidth - gap;
+    slider.style.setProperty('--end-spacer', `${Math.max(0, Math.floor(extra))}px`);
+}
+
+function updateActiveByScroll() {
+    if (!testimonios || testimonios.length === 0 || !slider) return;
+    // Elegir la tarjeta con MAYOR ancho visible dentro del slider (robusto para el último ítem)
+    const srect = slider.getBoundingClientRect();
+    let best = -1;
+    let bestIdx = 0;
+    testimonios.forEach((card, idx) => {
+        const r = card.getBoundingClientRect();
+        const left = Math.max(r.left, srect.left);
+        const right = Math.min(r.right, srect.right);
+        const visible = Math.max(0, right - left);
+        if (visible > best) { best = visible; bestIdx = idx; }
+    });
+    currentTestimonio = bestIdx;
+    updateUI();
+}
+
+function updateArrowState() {
+    // Loop continuo: flechas siempre habilitadas
+    if (testimonialPrevBtn) testimonialPrevBtn.disabled = false;
+    if (testimonialNextBtn) testimonialNextBtn.disabled = false;
+}
+
+if (testimonialNextBtn) {
+    testimonialNextBtn.addEventListener('click', () => scrollByCard(1));
+}
+if (testimonialPrevBtn) {
+    testimonialPrevBtn.addEventListener('click', () => scrollByCard(-1));
+}
+
+// Crear indicadores según cantidad de testimonios
+function renderTestimonialIndicators() {
+    if (!testimonialIndicators) return;
+    testimonialIndicators.innerHTML = '';
+    for (let i = 0; i < testimonios.length; i++) {
+        const dot = document.createElement('span');
+        dot.className = 't-dot' + (i === currentTestimonio ? ' active' : '');
+        dot.dataset.index = String(i);
+        dot.addEventListener('click', () => goToIndex(i));
+        testimonialIndicators.appendChild(dot);
+    }
+}
+
+// Llamar al renderizado inicial de puntos
+renderTestimonialIndicators();
+
+// Estado inicial: seleccionar SIEMPRE el primero
+function setInitialTestimonial() {
+    currentTestimonio = 0;
+    if (slider) slider.scrollLeft = 0;
+    testimonios.forEach((card, idx) => card.classList.toggle('active', idx === 0));
+    if (testimonialIndicators) {
+        const dots = testimonialIndicators.querySelectorAll('.t-dot');
+        dots.forEach((d, i) => d.classList.toggle('active', i === 0));
+    }
+}
+setInitialTestimonial();
+
+// Desbloquear el handler tras estabilizar layout para no saltar al 2do
+setTimeout(() => {
+    testimonialsReady = true;
+    updateActiveByScroll(); // sincroniza (seguirá en 0 porque scrollLeft=0)
+}, 300);
+
+let scrollTicking = false;
+if (slider) {
+    slider.addEventListener('scroll', () => {
+        if (!testimonialsReady) return; // ignora scroll inicial
+        if (!scrollTicking) {
+            window.requestAnimationFrame(() => {
+                updateActiveByScroll();
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    }, { passive: true });
+    // Initial state after layout
+    window.addEventListener('load', () => {
+        adjustEndPadding();
+        updateActiveByScroll();
+        goToIndex(currentTestimonio);
+    });
+    window.addEventListener('resize', () => {
+        adjustEndPadding();
+        // Mantener foco en el actual al cambiar tamaño
+        goToIndex(currentTestimonio);
+    });
+}
 
 // Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -612,8 +740,26 @@ function initMap() {
     
     // Agregar popup al marcador
     marker.bindPopup(popupContent).openPopup();
+
+    // Botón Google Maps en esquina inferior izquierda
+    const gmapsUrl = `https://maps.app.goo.gl/yzm3XqWrjG7MHnET7`;
+    const MapsControl = L.Control.extend({
+        options: { position: 'bottomleft' },
+        onAdd: function() {
+            const container = L.DomUtil.create('div', 'gmaps-control leaflet-bar');
+            container.innerHTML = `
+                <a class="gmaps-btn" href="${gmapsUrl}" target="_blank" rel="noopener">
+                    <i class="fas fa-directions" aria-hidden="true"></i>
+                    <span>Ver en Google Maps</span>
+                </a>
+            `;
+            L.DomEvent.disableClickPropagation(container);
+            return container;
+        }
+    });
+    map.addControl(new MapsControl());
     
-    console.log('🗺️ Leaflet Map inicializado correctamente');
+    console.log(' Leaflet Map inicializado correctamente');
 }
 
 // Función para actualizar la ubicación del mapa

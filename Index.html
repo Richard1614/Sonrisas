@@ -16,26 +16,26 @@
     <div id="preloader" aria-hidden="true">
         <div class="preloader-inner">
             <div class="preloader-logo">
-                <img src="Logo 1.png" width="100" height="100" alt="">
+                <img src="Sonrisas.ico" width="Auto" height="130" alt="">
             </div>
             <div class="preloader-title">Cargando...</div>
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Barra de navegación -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">
-                <img src="Imagen2.png" width="100" height="60" alt="">
+            <div class="logo"> <!-- Definimos el logo a la derecha -->
+                <img src="Imagen2.png" width="100" height="60" alt=""> <!-- Imaggen de Club Sonrisa -->
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links"> <!-- Link de la barra de naveggagcion extendible -->
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#casos">Sobre Nosotros</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#testimonios">Testimonios</a></li>
                 <li><a href="#contacto" class="Ct">Contacto</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle">
+            <button class="menu-toggle" id="menuToggle"> <!-- Boton de menu for cellphones  -->
                 <i class="fas fa-bars"></i>
             </button>
         </div>
@@ -44,13 +44,15 @@
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-video-container">
+            <img src="Instalacion 2.jpeg" class="hero-video" alt=""> <!-- Imagen de la instalacion -->
             <video class="hero-video" autoplay muted loop playsinline>
                 <!-- Aquí puedes agregar tu video -->
                 <!-- <source src="6914761_Motion_Graphics_Motion_Graphic_1920x1080.mp4" type="video/mp4"> -->
-                <source src="tu-video.webm" type="video/webm">
+                <source src="tu-video.webm" type="video/webm"> <!-- Video opcional si no se desea imagen -->
                 <!-- Fallback para navegadores que no soportan video -->
                 Tu navegador no soporta el elemento video.
             </video>
+            <img src="Instalacion 2.jpeg" class="hero-video" alt="">  
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
@@ -82,24 +84,24 @@
                     <div class="caso-icon">
                         <i class="fas fa-tooth"></i>
                     </div>
-                    <h3>Ortodoncia</h3>
-                    <p>Tratamientos personalizados para alinear tu sonrisa perfectamente.</p>
+                    <h3>Tratamiento Avanzado</h3>
+                    <p>Integramos tecnología y cercanía para mejorar la experiencia del paciente.</p>
                     <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="caso-card ">
                     <div class="caso-icon">
                         <i class="fas fa-star"></i>
                     </div>
-                    <h3>Estética Dental</h3>
-                    <p>Diseño de sonrisa con las últimas técnicas y materiales.</p>
+                    <h3>Resultados garantizados</h3>
+                    <p>Aclaramos tus dudas y te acompañamos en cada etapa de tu sonrisa.</p>
                     <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="caso-card ">
                     <div class="caso-icon">
-                        <i class="fas fa-procedures"></i>
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3>Sedación Consciente</h3>
-                    <p>Procedimientos cómodos y sin dolor con sedación controlada.</p>
+                    <h3>Dedicado compromiso</h3>
+                    <p>Con optimismo y compromiso, hacemos posible cada sonrisa.</p>
                     <a href="#" class="card-link">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -107,8 +109,8 @@
              <!-- Video automático -->
              <div class="servicios-video">
                 <div class="servicios-video-content">
-                    <h3>Conoce mas sobre nosotros</h3>
-                    <p>Descubre la tecnología de vanguardia que utilizamos para brindarte el mejor cuidado dental.</p>
+                    <h3>¿Paciente nuevo?</h3>
+                    <p>Regístrate para recibir noticias y estar en nuestra base de datos para futuras consultas.</p>
                     <div class="video-container">
                         <video id="autoVideo" class="auto-video" autoplay muted loop playsinline preload="auto" poster="poster.jpg"> <!-- poster imagen previa and Preload para que cargue el video y no se detenga -->
                             <source src="video-auto.mp4" type="video/mp4">
@@ -119,7 +121,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary" style="margin-top: 1rem;">
-                        Ver Más Videos <i class="fas fa-play"></i>
+                        Registrate <i class="fas fa-play"></i>
                     </button>
                 </div>
             </div>
@@ -141,45 +143,75 @@
                         <div class="servicios-grid" id="serviciosGrid">
                             <div class="servicio-item s-1">
                                 <div class="servicio-icon">
-                                    <img src="implante-dental.png" class="icon2" alt="">
+                                    <img src="Brackets.png" class="icon2" alt="">
                                 </div>
-                                <h3>Implantes Dentales</h3>
-                                <p>Reemplazo permanente de piezas dentales con tecnología avanzada.</p>
+                                <h3>Ortodoncia</h3>
+                                <p>Corrige y alinea tu sonrisa con tratamientos estéticos</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
                             <div class="servicio-item s-2">
+                                <div class="servicio-icon">
+                                    <img src="Child.png" class="icon2" alt="">
+                                </div>
+                                <h3>Odontopediatria</h3>
+                                <p>Prevención y cuidado dental para sonrisas infantiles saludables.</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="servicio-item s-3">
+                                <div class="servicio-icon">
+                                    <img src="Tooth brillannte.png" class="icon2" alt="">
+                                </div>
+                                <h3>Estética dental</h3>
+                                <p>Sonrisas perfectas con estética dental avanzada y natural.</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="servicio-item s-4">
                                 <div class="servicio-icon">
                                     <img src="pasta-dental.png" class="icon2" alt="">
                                 </div>
                                 <h3>Blanqueamiento</h3>
-                                <p>Sonrisa más blanca y brillante con tratamientos profesionales.</p>
-                            </div>
-                            <div class="servicio-item s-3">
-                                <div class="servicio-icon">
-                                    <img src="rayos-x.png" class="icon1" alt="">
-                                </div>
-                                <h3>Radiología Digital</h3>
-                                <p>Diagnóstico preciso con la última tecnología en imagenología.</p>
-                            </div>
-                            <div class="servicio-item s-4">
-                                <div class="servicio-icon">
-                                    <img src="informe-dental.png" class="icon2" alt="">
-                                </div>
-                                <h3>Periodoncia</h3>
-                                <p>Cuidado especializado de encías y prevención de enfermedades.</p>
+                                <p>Blanqueamiento dental seguro para una sonrisa más brillante.</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
                             <div class="servicio-item s-5">
                                 <div class="servicio-icon">
-                                    <img src="diente.png" class="icon2" alt="">
+                                    <img src="implante-dental.png" class="icon2" alt="">
                                 </div>
-                                <h3>Rehabilitación Oral</h3>
-                                <p>Restauración completa de funcionalidad y estética dental.</p>
+                                <h3>Implantes dentales</h3>
+                                <p>Implantes dentales para una sonrisa funcional y natural.</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
                             <div class="servicio-item s-6">
                                 <div class="servicio-icon">
+                                    <img src="diente.png" class="icon2" alt="">
+                                </div>
+                                <h3>Rehabilitación oral</h3>
+                                <p>Rehabilitación oral para recuperar función y estética.</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="servicio-item s-7">
+                                <div class="servicio-icon">
                                     <img src="extracto.png" class="icon2" alt="">
                                 </div>
-                                <h3>Cirugía Oral</h3>
-                                <p>Procedimientos quirúrgicos con máxima precisión y seguridad.</p>
+                                <h3>Endodoncia</h3>
+                                <p>Conserva tu diente y elimina el dolor con endodoncia.</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            <div class="servicio-item s-8">
+                                <div class="servicio-icon">
+                                    <img src="silla-de-dentista.png" class="icon2" alt="">
+                                </div>
+                                <h3>Cirugia</h3>
+                                <p>Cirugía bucal para una salud oral completa.</p>
+                                <br>
+                                <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                         
@@ -226,16 +258,19 @@
                     <div class="gallery-container">
                         <div class="gallery-main">
                             <div class="image-wrapper active">
-                                <img src="dental-2450766_1920.jpg" alt="Instalaciones dentales">
+                                <img src="Instalacion.jpeg" alt="Instalaciones dentales">
                             </div>
                             <div class="image-wrapper">
-                                <img src="chair-2584260_1920.jpg" alt="Tecnología dental">
+                                <img src="Home.jpeg" alt="">
                             </div>
                             <div class="image-wrapper">
-                                <img src="woman-2141808_1280.jpg" alt="Consultorio moderno">
+                                <img src="Instalacion 3.jpeg" alt="Consultorio moderno">
                             </div>
                             <div class="image-wrapper">
-                                <img src="chair-2584260_1920.jpg" alt="Equipos de última generación">
+                                <img src="Instalacion 4.jpeg" alt="Equipos de última generación">
+                            </div>
+                            <div class="image-wrapper">
+                                <img src="Doctors2.jpg" alt="Equipos de última generación">
                             </div>
                         </div>
                         
@@ -255,6 +290,7 @@
                             <span class="indicator" data-slide="1"></span>
                             <span class="indicator" data-slide="2"></span>
                             <span class="indicator" data-slide="3"></span>
+                            <span class="indicator" data-slide="4"></span>
                         </div>
                     </div>
                 </div>
@@ -268,18 +304,20 @@
             <div class="section-header">
                 <br>
                 <span class="section-tag">Opiniones</span>
-                <h2>Testimonios</h2>
+                <h2>Historias Felices</h2>
+                <p>¡Creando sonrisas vibrantes para estilos de vida saludables!</p>
             </div>
             <div class="testimonios-slider">
                 <div class="testimonio-card  active">
                     <div class="quote-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="testimonio-text">"Excelente atención y profesionalismo. El Club Sonriisas me ayudó a recuperar mi sonrisa con mucha paciencia y dedicación. Los resultados son increíbles."</p>
+                    <p class="testimonio-text">"Me encantó contar con Club Sonrisa para mi tratamiento de brackets porque me dieron mucha tranquilidad, seguimiento y una excelente atención! Para los procesos de ortodoncia largos a veces los ánimos flaquean pero ellos además de las revisiones mensuales y cuidados me dieron ánimos 💪🏼 en cada etapa del camino. Realmente salgo contenta de mis citas y de los resultados finales."</p>
                     <div class="testimonio-autor">
-                        <div class="autor-avatar">NN</div>
+                        <div class="autor-avatar"><img src="Persona 1.jpeg" alt="Liana Quiroz"></div>
                         <div>
-                            <h4>Nora Nataly</h4>
+                            <h4>Liana Quiroz</h4>
+                            <p>Administradora de empresas</p>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -294,11 +332,13 @@
                     <div class="quote-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="testimonio-text">"El mejor consultorio dental que he visitado. Tecnología de punta, instalaciones impecables y un trato muy humano. Totalmente recomendado."</p>
+                    <p class="testimonio-text">"Estoy super contento con los resultados de mi tratamiento ortodóntico, ahora tengo una nueva sonrisa, agradezco mucho el trabajo súper profesional, y el trato siempre amable de la Dra. Cristina Icochea en ClubSonrisa."</p>
                     <div class="testimonio-autor">
-                        <div class="autor-avatar">RP</div>
+                        <!-- <div class="autor-avatar">RP</div> -->
+                        <div class="autor-avatar"><img src="Persona 2.jpeg" alt="David Sallirrosas"></div>
                         <div>
-                            <h4>Ruth Peralta</h4>
+                            <h4>David Salirrosas</h4>
+                            <p>Químico Farmacéutico</p>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -313,11 +353,13 @@
                     <div class="quote-icon">
                         <i class="fas fa-quote-left"></i>
                     </div>
-                    <p class="testimonio-text">"Después de años evitando ir al dentista, finalmente encontré un lugar donde me siento cómoda. La sedación consciente fue perfecta para mí."</p>
+                    <p class="testimonio-text">"Es difícil expresar en pocas palabras nuestro agradecimiento y satisfacción con la Dra. Cristina Icochea, ya que ella atendió a mi hija mayor Mariella Alarcón y actualmente a mi hija menor Maricielo. Estoy muy Agradecida por el servicio y el trato recibido a lo largo de todo el proceso. Si tuviese que elegir una sola palabra para definir su trabajo y el de todo su equipo esa sería: "IMPECABLE"</p>
                     <div class="testimonio-autor">
-                        <div class="autor-avatar">AP</div>
+                        <!-- <div class="autor-avatar">AP</div> -->
+                        <div class="autor-avatar"><img src="Person 3.jpeg" alt="David Sallirrosas"></div>
                         <div>
-                            <h4>Angel Peralta</h4>
+                            <h4>Shirley Arista</h4>
+                            <p>Ingeniera de Sistemas</p>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -328,6 +370,49 @@
                         </div>
                     </div>
                 </div>
+                <div class="testimonio-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonio-text">"Asistir a Club Sonrisa es una gran experiencia y se preguntaran el porque. Desde el ingreso se puede sentir una gran calidez y amabilidad por el paciente, las instalaciones son confortables, modernas y brindan una sensación de seguridad.La atención de cada uno de los profesionales del centro o consultorio es A-1.Gracias a todo el personal que conforma el equipo de club sonrisa por la magnifica atención."</p>
+                    <div class="testimonio-autor">
+                        <!-- <div class="autor-avatar">AP</div> -->
+                        <div class="autor-avatar"><img src="Person 4.jpeg" alt="David Sallirrosas"></div>
+                        <div>
+                            <h4>Karla Villacorta</h4>
+                            <p>Tecnologa Medica</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card">
+                    <div class="quote-icon">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    <p class="testimonio-text">"Asistir a Club Sonrisa es una gran experiencia y se preguntaran el porque. Desde el ingreso se puede sentir una gran calidez y amabilidad por el paciente, las instalaciones son confortables, modernas y brindan una sensación de seguridad.La atención de cada uno de los profesionales del centro o consultorio es A-1.Gracias a todo el personal que conforma el equipo de club sonrisa por la magnifica atención."</p>
+                    <div class="testimonio-autor">
+                        <!-- <div class="autor-avatar">AP</div> -->
+                        <div class="autor-avatar"><img src="Person 5.jpeg" alt="David Sallirrosas"></div>
+                        <div>
+                            <h4>Nicole Guadalupe</h4>
+                            <p>Licenciada en comunicaciones</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="slider-controls">
                 <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
@@ -355,7 +440,7 @@
                             <i class="fas fa-clock"></i>
                             <div>
                                 <h4>Horario</h4>
-                                <p>Lun - Vie: 9:00 AM - 7:00 PM<br>Sábados: 9:00 AM - 2:00 PM</p>
+                                <p>Lun - Vie: 9:30 AM - 8:00 PM<br>Sábados: 9:00 AM - 2:00 PM</p>
                             </div>
                         </div>
                         <div class="detalle-item">
@@ -380,8 +465,8 @@
             <div class="section-header">
                 <br>
                 <span class="section-tag">Comunícate</span>
-                <h2>Reserva tu cita</h2>
-                <p>Complete los campos</p>
+                <h2>Contactanos</h2>
+                <p>Con gusto te atenderemos</p>
             </div>
             <form class="contact-form">
                 <div class="form-row">
@@ -428,8 +513,8 @@
                     <h3>Club Sonrisa</h3>
                     <p>Especialista en salud dental y mucho más.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1ZsAygLWdC/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/clubsonrisa_?igsh=MThmMmtwM2pzdGR5ZQ==" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                     </div>
