@@ -471,45 +471,9 @@ function animateCounter(element, target, duration = 2000) {
     }, 16);
 }
 
-// Cursor Trail Effect
-const cursorTrail = [];
-const trailLength = 10;
-
-document.addEventListener('mousemove', (e) => {
-    cursorTrail.push({ x: e.clientX, y: e.clientY });
-    
-    if (cursorTrail.length > trailLength) {
-        cursorTrail.shift();
-    }
-    
-    drawCursorTrail();
-});
-
-function drawCursorTrail() {
-    const existingTrails = document.querySelectorAll('.cursor-trail');
-    existingTrails.forEach(trail => trail.remove());
-    
-    cursorTrail.forEach((pos, index) => {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        trail.style.cssText = `
-            position: fixed;
-            width: ${20 - index * 2}px;
-            height: ${20 - index * 2}px;
-            background: radial-gradient(circle, rgba(102, 126, 234, ${0.5 - index * 0.05}) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            left: ${pos.x}px;
-            top: ${pos.y}px;
-            transform: translate(-50%, -50%);
-            transition: all 0.1s ease;
-        `;
-        document.body.appendChild(trail);
-        
-        setTimeout(() => trail.remove(), 100);
-    });
-}
+// Cursor Trail Effect - disabled
+// Previously, this code added visual aura elements following the mouse.
+// It has been removed to avoid distraction and improve performance.
 
 // Icon floating animation
 const casoIcons = document.querySelectorAll('.caso-icon, .servicio-icon');

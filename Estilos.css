@@ -1784,10 +1784,10 @@ body.loading { overflow: hidden; }
         top: 0;
         left: -100%;
         height: 100vh;
-        z-index: 3000;
+        z-index: 6000; /* por encima de cualquier overlay */
         flex-direction: column;
         background: #52A2B4;
-        width: 80%;
+        width: 60%;
         max-width: 360px;
         padding: 90px 1.25rem 2rem 1.25rem; /* espacio para la barra superior */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
@@ -1864,9 +1864,9 @@ body.loading { overflow: hidden; }
     .video-container { height: 180px; }
 }
 
-/* Overlay para menú móvil */
-.nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transition: opacity 0.25s ease; z-index: 2990; }
-.nav-overlay.active { opacity: 1; visibility: visible; }
+/* Overlay para menú móvil — deshabilitado para evitar bloqueo de clics */
+.nav-overlay { position: fixed; inset: 0; background: transparent; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; z-index: -1; }
+.nav-overlay.active { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
 
 /* Bloqueo de scroll cuando el menú está abierto */
 body.nav-open { overflow: hidden; }
