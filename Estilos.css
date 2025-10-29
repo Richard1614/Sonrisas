@@ -38,6 +38,9 @@ html {
     scroll-behavior: smooth;
   }
 
+/* Evitar que el header fijo tape el inicio de las secciones al hacer scroll */
+section[id] { scroll-margin-top: 90px; }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -59,7 +62,9 @@ html {
 .navbar.scrolled {
     background: #52A2B4;
     backdrop-filter: none;
-    box-shadow: 0 4px 20px rgba(248, 181, 193, 0.3);
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .navbar .container {
@@ -123,9 +128,10 @@ html {
 .nav-links a {
     color: var(--dark-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.25s ease, background-color 0.25s ease;
+    border-radius: 8px;
 }
 
 /* Enlaces blancos cuando navbar es transparente */
@@ -134,24 +140,34 @@ html {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Link activo: mantener color y resalte */
+.nav-links a.active {
+    color: #ffffff;
+}
+
+.navbar.scrolled .nav-links a.active {
+    color: #ffffff;
+}
+
 /* Enlaces blancos cuando navbar tiene fondo */
 .navbar.scrolled .nav-links a {
     color: white;
     text-shadow: none;
 }
 
-.nav-links a::after {
+.nav-links a:not(.Ct)::after {
     content: '';
     position: absolute;
     bottom: -5px;
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #D8A0A3;
+    background-color: #ffffff;
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
+.nav-links a:not(.Ct):hover::after,
+.nav-links a.active::after {
     width: 100%;
 }
 
@@ -199,10 +215,18 @@ html {
 }
 
 .hero-video {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    opacity: 0;
+    transition: opacity 700ms ease-in-out;
+}
+
+.hero-video.active {
+    opacity: 1;
 }
 
 .hero-overlay {
@@ -242,11 +266,12 @@ html {
 }
 
 .hero-title {
-    font-size: 4rem;
-    width: 800px;
+    font-size: clamp(2rem, 5vw, 4rem);
+    max-width: 24ch;
+    min-width: 800px;
     font-weight: 700;
     margin-bottom: 1rem;
-    animation: fadeInUp 1s ease;
+    animation: fadeInUp 600ms ease both;
     text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -265,14 +290,14 @@ html {
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    .hero::before { animation: none !important; }
 }
 
 .scroll-indicator {
@@ -283,6 +308,9 @@ html {
     color: white;
     font-size: 2rem;
     animation: bounce 2s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+    .scroll-indicator { animation: none; }
 }
 
 @keyframes bounce {
@@ -298,10 +326,20 @@ html {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
     cursor: pointer;
 }
+
+.btn:focus-visible, .carousel-btn:focus-visible, .gallery-btn:focus-visible, .slider-btn:focus-visible, .nav-links a:focus-visible {
+    outline: 3px solid #52A2B4;
+    outline-offset: 2px;
+    border-radius: 12px;
+}
+
+/* Override para el botón Ct: mantener completamente oval y sin anillo interior cuadrado */
+.nav-links a.Ct { border-radius: 9999px; }
+.nav-links a.Ct:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(255,255,255,0.35); border-radius: 9999px; }
 
 .btn-primary {
     background: white;
@@ -327,11 +365,23 @@ html {
 /* Galería de imágenes */
 .gallery-container {
     position: relative;
-    width: 100%;
-    height: 400px;
+    width: 110%;
+    height: min(400px, 55vh); /* Min para faciitar el desggose a los dispositivos moviles */
     border-radius: 20px;
     overflow: hidden;
     box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .gallery-container {
+    height: clamp(240px, 50vh, 320px);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-container {
+    height: clamp(200px, 45vh, 280px);
+  }
 }
 
 .gallery-main {
@@ -395,6 +445,9 @@ html {
     background: #3073B7;
     color: white;
     transform: scale(1.1);
+}
+.gallery-btn:focus-visible, .carousel-btn:focus-visible {
+    box-shadow: 0 0 0 4px rgba(48, 115, 183, 0.35);
 }
 
 /* Indicadores */
@@ -473,7 +526,7 @@ html {
 
 /* Casos Clínicos */
 .casos-clinicos {
-    padding: 6rem 0;
+    padding: 3rem 0;
     background: #F8FAFC;
     position: relative;
 }
@@ -589,7 +642,7 @@ html {
 
 /* Servicios */
 .servicios {
-    padding: 6rem 0;
+    padding: 3rem 0;
     background: white;
     position: relative;
 }
@@ -769,6 +822,9 @@ body.loading { overflow: hidden; }
     gap: 0.8rem;
     margin-top: 2rem;
     padding: 1rem 0;
+}
+.carousel-indicators .indicator-dot[aria-selected="true"], .gallery-indicators .indicator[aria-selected="true"] {
+    box-shadow: 0 0 0 3px rgba(82, 162, 180, 0.35);
 }
 
 .indicator-dot {
@@ -1258,7 +1314,7 @@ body.loading { overflow: hidden; }
 
 /* Testimonios */
 .testimonios {
-    padding: 6rem 0;
+    padding: 3rem 0;
     background: white;
     position: relative;
 }
@@ -1548,7 +1604,7 @@ body.loading { overflow: hidden; }
 
 /* Contacto */
 .contacto {
-    padding: 6rem 0;
+    padding: 3rem 0;
     background: white;
 }
 
@@ -1725,40 +1781,53 @@ body.loading { overflow: hidden; }
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
-        top: 70px;
+        top: 0;
         left: -100%;
+        height: 100vh;
+        z-index: 3000;
         flex-direction: column;
-        background: #52A2B4; /* color de fondo para móvil */
-        width: 100%;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        background: #52A2B4;
+        width: 80%;
+        max-width: 360px;
+        padding: 90px 1.25rem 2rem 1.25rem; /* espacio para la barra superior */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         transition: left 0.3s ease;
+        overflow-y: auto;
     }
     
-    .nav-links.active {
-        left: 0;
-    }
+    .nav-links.active { left: 0; }
     
-    .menu-toggle {
-        display: block;
-    }
-    
-    
+    .menu-toggle { display: block; }
+
+    /* Mejora de usabilidad de enlaces */
+    .nav-links li { width: 100%; }
+    .nav-links a:not(.Ct) { display: block; padding: 0.9rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .nav-links a:not(.Ct)::after { display: none; }
+    .nav-links a.active:not(.Ct) { background: rgba(255,255,255,0.12); color: #fff; }
+    .nav-links a.Ct { display: inline-flex; width: auto; margin: 0.5rem auto 0; padding: 1rem 1.5rem; border: 0; border-radius: 9999px; }
+
     /* Hero: evitar ancho fijo y mejorar lectura en móvil */
     .hero-content { padding: 1.5rem; }
-    .hero-title {
-        font-size: 2.2rem;
+    .hero-title { /* para 768px */
+        font-size: clamp(1.8rem, 4.7vw, 2.3rem);
         width: auto;
         max-width: 100%;
-        line-height: 1.2;
-        text-align: center;
+        min-width: 0;
+        line-height: 1.12;
         margin-left: auto;
         margin-right: auto;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
         text-align: center;
+        text-wrap: balance;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1rem, 3.8vw, 1.25rem);
+        line-height: 1.35;
+        text-align: center;
+        max-width: 36ch;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .hero-buttons {
@@ -1795,9 +1864,28 @@ body.loading { overflow: hidden; }
     .video-container { height: 180px; }
 }
 
+/* Overlay para menú móvil */
+.nav-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); opacity: 0; visibility: hidden; transition: opacity 0.25s ease; z-index: 2990; }
+.nav-overlay.active { opacity: 1; visibility: visible; }
+
+/* Bloqueo de scroll cuando el menú está abierto */
+body.nav-open { overflow: hidden; }
+
 @media (max-width: 480px) {
     .servicios-carousel {
         padding: 1rem;
+    }
+    
+    .hero-title { /* para 480px */
+        font-size: clamp(1.9rem, 9.5vw, 2.5rem);
+        max-width: 100%;
+        min-width: 0;
+        line-height: 1.12;
+    }
+    .hero-subtitle {
+        font-size: clamp(0.95rem, 4.2vw, 1.15rem);
+        line-height: 1.4;
+        max-width: 34ch;
     }
     
     .servicios-grid {

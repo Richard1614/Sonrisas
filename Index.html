@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Logo 1.png">
     <title>Club Sonrisa</title>
+    <meta name="theme-color" content="#52A2B4">
     <link rel="stylesheet" href="Estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,24 +36,26 @@
                 <li><a href="#testimonios">Testimonios</a></li>
                 <li><a href="#contacto" class="Ct">Contacto</a></li>
             </ul>
-            <button class="menu-toggle" id="menuToggle"> <!-- Boton de menu for cellphones  -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"> <!-- Boton de menu for cellphones  -->
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-video-container">
-            <img src="Instalacion 2.jpeg" class="hero-video" alt=""> <!-- Imagen de la instalacion -->
-            <video class="hero-video" autoplay muted loop playsinline>
+            <img src="IMG_0554.JPG" class="hero-video hero-1 active" style="--pos-x: 45%; --pos-y: 40%;" alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
+            <img src="IMG_0575.JPG" class="hero-video hero-2" style="--pos-x: 60%; --pos-y: 50%;" alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
+            <!-- <video class="hero-video" autoplay muted loop playsinline preload="metadata"> -->
                 <!-- Aquí puedes agregar tu video -->
                 <!-- <source src="6914761_Motion_Graphics_Motion_Graphic_1920x1080.mp4" type="video/mp4"> -->
-                <source src="tu-video.webm" type="video/webm"> <!-- Video opcional si no se desea imagen -->
+                <!-- <source src="0_Dentist_Dental_3840x2160.mp4" type="video/webm"> --> <!-- Video opcional si no se desea imagen -->
                 <!-- Fallback para navegadores que no soportan video -->
                 Tu navegador no soporta el elemento video.
-            </video>
-            <img src="Instalacion 2.jpeg" class="hero-video" alt="">  
+            <!-- </video> -->
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
@@ -143,7 +146,7 @@
                         <div class="servicios-grid" id="serviciosGrid">
                             <div class="servicio-item s-1">
                                 <div class="servicio-icon">
-                                    <img src="Brackets.png" class="icon2" alt="">
+                                    <img src="Brackets.png" class="icon2" alt="Icono de ortodoncia" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Ortodoncia</h3>
                                 <p>Corrige y alinea tu sonrisa con tratamientos estéticos</p>
@@ -152,7 +155,7 @@
                             </div>
                             <div class="servicio-item s-2">
                                 <div class="servicio-icon">
-                                    <img src="Child.png" class="icon2" alt="">
+                                    <img src="Child.png" class="icon2" alt="Icono de odontopediatría" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Odontopediatria</h3>
                                 <p>Prevención y cuidado dental para sonrisas infantiles saludables.</p>
@@ -161,7 +164,7 @@
                             </div>
                             <div class="servicio-item s-3">
                                 <div class="servicio-icon">
-                                    <img src="Tooth brillannte.png" class="icon2" alt="">
+                                    <img src="Tooth brillannte.png" class="icon2" alt="Icono de estética dental" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Estética dental</h3>
                                 <p>Sonrisas perfectas con estética dental avanzada y natural.</p>
@@ -170,7 +173,7 @@
                             </div>
                             <div class="servicio-item s-4">
                                 <div class="servicio-icon">
-                                    <img src="pasta-dental.png" class="icon2" alt="">
+                                    <img src="pasta-dental.png" class="icon2" alt="Icono de blanqueamiento" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Blanqueamiento</h3>
                                 <p>Blanqueamiento dental seguro para una sonrisa más brillante.</p>
@@ -179,7 +182,7 @@
                             </div>
                             <div class="servicio-item s-5">
                                 <div class="servicio-icon">
-                                    <img src="implante-dental.png" class="icon2" alt="">
+                                    <img src="implante-dental.png" class="icon2" alt="Icono de implantes dentales" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Implantes dentales</h3>
                                 <p>Implantes dentales para una sonrisa funcional y natural.</p>
@@ -188,7 +191,7 @@
                             </div>
                             <div class="servicio-item s-6">
                                 <div class="servicio-icon">
-                                    <img src="diente.png" class="icon2" alt="">
+                                    <img src="diente.png" class="icon2" alt="Icono de rehabilitación oral" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Rehabilitación oral</h3>
                                 <p>Rehabilitación oral para recuperar función y estética.</p>
@@ -197,7 +200,7 @@
                             </div>
                             <div class="servicio-item s-7">
                                 <div class="servicio-icon">
-                                    <img src="extracto.png" class="icon2" alt="">
+                                    <img src="extracto.png" class="icon2" alt="Icono de endodoncia" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Endodoncia</h3>
                                 <p>Conserva tu diente y elimina el dolor con endodoncia.</p>
@@ -206,7 +209,7 @@
                             </div>
                             <div class="servicio-item s-8">
                                 <div class="servicio-icon">
-                                    <img src="silla-de-dentista.png" class="icon2" alt="">
+                                    <img src="silla-de-dentista.png" class="icon2" alt="Icono de cirugía" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Cirugia</h3>
                                 <p>Cirugía bucal para una salud oral completa.</p>
@@ -217,22 +220,22 @@
                         
                         <!-- Controles de navegación -->
                         <div class="carousel-controls">
-                            <button class="carousel-btn prev-btn" id="prevServices">
+                            <button class="carousel-btn prev-btn" id="prevServices" aria-label="Anterior servicio">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <button class="carousel-btn next-btn" id="nextServices">
+                            <button class="carousel-btn next-btn" id="nextServices" aria-label="Siguiente servicio">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>
                     
                     <!-- Indicadores de posición -->
-                    <div class="carousel-indicators" id="carouselIndicators">
-                        <span class="indicator-dot active" data-slide="0"></span>
-                        <span class="indicator-dot" data-slide="1"></span>
-                        <span class="indicator-dot" data-slide="2"></span>
-                        <span class="indicator-dot" data-slide="3"></span>
-                        <span class="indicator-dot" data-slide="4"></span>
+                    <div class="carousel-indicators" id="carouselIndicators" role="tablist" aria-label="Posición del carrusel de servicios">
+                        <span class="indicator-dot active" data-slide="0" role="tab" aria-selected="true" tabindex="0" aria-label="Ir al slide 1"></span>
+                        <span class="indicator-dot" data-slide="1" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir al slide 2"></span>
+                        <span class="indicator-dot" data-slide="2" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir al slide 3"></span>
+                        <span class="indicator-dot" data-slide="3" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir al slide 4"></span>
+                        <span class="indicator-dot" data-slide="4" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir al slide 5"></span>
                     </div>
                 </div>
             </div>
@@ -261,36 +264,36 @@
                                 <img src="Instalacion.jpeg" alt="Instalaciones dentales">
                             </div>
                             <div class="image-wrapper">
-                                <img src="Home.jpeg" alt="">
+                                <img src="Home.jpeg" alt="Recepción de la clínica" loading="lazy" decoding="async">
                             </div>
                             <div class="image-wrapper">
-                                <img src="Instalacion 3.jpeg" alt="Consultorio moderno">
+                                <img src="Instalacion 3.jpeg" alt="Consultorio moderno" loading="lazy" decoding="async">
                             </div>
                             <div class="image-wrapper">
-                                <img src="Instalacion 4.jpeg" alt="Equipos de última generación">
+                                <img src="Instalacion 4.jpeg" alt="Equipos de última generación" loading="lazy" decoding="async">
                             </div>
                             <div class="image-wrapper">
-                                <img src="Doctors2.jpg" alt="Equipos de última generación">
+                                <img src="Personall.jpeg" alt="Equipo médico" loading="lazy" decoding="async">
                             </div>
                         </div>
                         
                         <!-- Controles de navegación -->
                         <div class="gallery-controls">
-                            <button class="gallery-btn prev-btn" id="prevBtn">
+                            <button class="gallery-btn prev-btn" id="prevBtn" aria-label="Imagen anterior">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <button class="gallery-btn next-btn" id="nextBtn">
+                            <button class="gallery-btn next-btn" id="nextBtn" aria-label="Imagen siguiente">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
                         
                         <!-- Indicadores -->
-                        <div class="gallery-indicators">
-                            <span class="indicator active" data-slide="0"></span>
-                            <span class="indicator" data-slide="1"></span>
-                            <span class="indicator" data-slide="2"></span>
-                            <span class="indicator" data-slide="3"></span>
-                            <span class="indicator" data-slide="4"></span>
+                        <div class="gallery-indicators" role="tablist" aria-label="Posición de la galería de instalaciones">
+                            <span class="indicator active" data-slide="0" role="tab" aria-selected="true" tabindex="0" aria-label="Ir a la imagen 1"></span>
+                            <span class="indicator" data-slide="1" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir a la imagen 2"></span>
+                            <span class="indicator" data-slide="2" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir a la imagen 3"></span>
+                            <span class="indicator" data-slide="3" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir a la imagen 4"></span>
+                            <span class="indicator" data-slide="4" role="tab" aria-selected="false" tabindex="-1" aria-label="Ir a la imagen 5"></span>
                         </div>
                     </div>
                 </div>
@@ -415,8 +418,8 @@
 
             </div>
             <div class="slider-controls">
-                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn prev" aria-label="Testimonio anterior"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" aria-label="Siguiente testimonio"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -472,17 +475,17 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="nombre">Nombre Completo</label>
-                        <input type="text" id="nombre" name="nombre" required>
+                        <input type="text" id="nombre" name="nombre" required autocomplete="name">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required autocomplete="email">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" required>
+                        <input type="tel" id="telefono" name="telefono" required autocomplete="tel">
                     </div>
                     <div class="form-group">
                         <label for="asunto">Asunto</label>
@@ -513,10 +516,10 @@
                     <h3>Club Sonrisa</h3>
                     <p>Especialista en salud dental y mucho más.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/share/1ZsAygLWdC/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/clubsonrisa_?igsh=MThmMmtwM2pzdGR5ZQ==" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/share/1ZsAygLWdC/" target="_blank" class="social-link" aria-label="Facebook de Club Sonrisa" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/clubsonrisa_?igsh=MThmMmtwM2pzdGR5ZQ==" target="_blank" class="social-link" aria-label="Instagram de Club Sonrisa" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="WhatsApp de Club Sonrisa" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn de Club Sonrisa" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -532,7 +535,7 @@
                     <h4>Servicios</h4>
                     <ul>
                         <li><a href="#">Ortodoncia</a></li>
-                        <li><a href="#">Implantes</a></li>
+                        <li><a href="#">Odontopediatria</a></li>
                         <li><a href="#">Estética Dental</a></li>
                         <li><a href="#">Blanqueamiento</a></li>
                     </ul>

@@ -1,16 +1,44 @@
-// Mobile Menu Toggle
+// Mobile Menu Toggle + Overlay + Scroll lock
 const menuToggle = document.getElementById('menuToggle');
 const navLinks = document.querySelector('.nav-links');
+const navOverlay = document.getElementById('navOverlay');
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
+function openNav(){
+    navLinks.classList.add('active');
+    if (navOverlay) navOverlay.classList.add('active');
+    document.body.classList.add('nav-open');
+}
+function closeNav(){
+    navLinks.classList.remove('active');
+    if (navOverlay) navOverlay.classList.remove('active');
+    document.body.classList.remove('nav-open');
+}
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.contains('active');
+        if (isOpen) closeNav(); else openNav();
+    });
+}
 
 // Close menu when clicking on a link
 document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-    });
+    link.addEventListener('click', () => closeNav());
+});
+
+// Close on overlay click
+if (navOverlay) {
+    navOverlay.addEventListener('click', closeNav);
+}
+
+// Close on Esc key
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeNav();
+});
+
+// Close if resizing above mobile breakpoint
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeNav();
 });
 
 // Navbar scroll effect
@@ -266,6 +294,73 @@ animateElements.forEach(el => {
 //         hero.style.opacity = 1 - (scrolled / 700);
 //     }
 // });
+
+// Hero background slider (imágenes y/o video)
+(function initHeroBackgroundSlider(){
+    const container = document.querySelector('.hero-video-container');
+    if (!container) return;
+    const slides = Array.from(container.querySelectorAll('.hero-video'));
+    if (slides.length <= 1) return;
+
+    // Asegurar que solo haya un activo al inicio
+    let current = slides.findIndex(el => el.classList.contains('active'));
+    if (current === -1) {
+        current = 0;
+        slides[0].classList.add('active');
+    } else {
+        slides.forEach((el, i) => el.classList.toggle('active', i === current));
+    }
+
+    function isVideo(el){ return el.tagName === 'VIDEO'; }
+
+    function playIfVideo(el){ if (isVideo(el)) { try { el.play().catch(()=>{}); } catch(_){} } }
+    function pauseIfVideo(el){ if (isVideo(el)) { try { el.pause(); } catch(_){} } }
+    function resetVideo(el){ if (isVideo(el)) { try { el.currentTime = 0; } catch(_){} } }
+
+    // Respetar reduce motion
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const INTERVAL_MS = prefersReduced ? 8000 : 5000;
+
+    let timer = null;
+    function show(index){
+        const prev = slides[current];
+        const next = slides[index];
+        if (!next || next === prev) return;
+        pauseIfVideo(prev);
+        prev.classList.remove('active');
+        next.classList.add('active');
+        playIfVideo(next);
+        // Resetear el video anterior para que inicie desde cero al volver
+        resetVideo(prev);
+        current = index;
+    }
+
+    function next(){
+        const idx = (current + 1) % slides.length;
+        show(idx);
+    }
+
+    function start(){
+        stop();
+        timer = setInterval(next, INTERVAL_MS);
+    }
+
+    function stop(){ if (timer) { clearInterval(timer); timer = null; } }
+
+    // Iniciar: si el primero es video, iniciar reproducción
+    playIfVideo(slides[current]);
+
+    // Pausar en hover para control manual implícito del usuario
+    container.addEventListener('mouseenter', stop);
+    container.addEventListener('mouseleave', start);
+
+    // Detener si pestaña pierde foco; reanudar al volver
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop(); else start();
+    });
+
+    start();
+})();
 
 // Form Validation and Submit
 const contactForm = document.querySelector('.contact-form');
