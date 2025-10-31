@@ -1808,6 +1808,16 @@ body.loading { overflow: hidden; }
 
     /* Hero: evitar ancho fijo y mejorar lectura en móvil */
     .hero-content { padding: 1.5rem; }
+    /* Ajuste de altura del hero en móviles para evitar saltos por la barra del navegador */
+    .hero {
+        height: 100vh;   /* fallback */
+        height: 100svh;  /* viewport seguro en móviles */
+        min-height: 520px;
+    }
+    /* iOS fallback para llenar la pantalla disponible */
+    @supports (-webkit-touch-callout: none) {
+        .hero { height: -webkit-fill-available; }
+    }
     .hero-title { /* para 768px */
         font-size: clamp(1.8rem, 4.7vw, 2.3rem);
         width: auto;
@@ -1927,7 +1937,7 @@ body.nav-open { overflow: hidden; }
     
     /* Video responsive */
     .hero-video {
-        object-position: center center;
+        object-position: center 25%; /* subir el encuadre para priorizar rostros/contenido */
     }
     
     /* En móviles, reducir la opacidad del overlay para mejor visibilidad */
