@@ -1818,6 +1818,11 @@ body.loading { overflow: hidden; }
     @supports (-webkit-touch-callout: none) {
         .hero { height: -webkit-fill-available; }
     }
+
+    /* Encadre específico por imagen en móviles (<=768px) */
+    .hero-video.hero-1 { object-position: center 35%; }
+    .hero-video.hero-2 { object-position: center 45%; }
+
     .hero-title { /* para 768px */
         font-size: clamp(1.8rem, 4.7vw, 2.3rem);
         width: auto;
@@ -1937,8 +1942,11 @@ body.nav-open { overflow: hidden; }
     
     /* Video responsive */
     .hero-video {
-        object-position: center 25%; /* subir el encuadre para priorizar rostros/contenido */
+        object-position: center 25%; /* base móvil */
     }
+    /* Afinar aún más por imagen en pantallas muy estrechas (<=480px) */
+    .hero-video.hero-1 { object-position: center 30%; }
+    .hero-video.hero-2 { object-position: center 40%; }
     
     /* En móviles, reducir la opacidad del overlay para mejor visibilidad */
     .hero-overlay {
