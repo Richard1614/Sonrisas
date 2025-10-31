@@ -38,7 +38,7 @@ html {
     scroll-behavior: smooth;
   }
 
-/* Evitar que el header fijo tape el inicio de las secciones al hacer scroll */
+/* Evita que el header fijo tape el inicio de las secciones al hacer scroll */
 section[id] { scroll-margin-top: 90px; }
 
 .container {

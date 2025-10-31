@@ -1,35 +1,3 @@
-// 🗺️ Ejemplos de cómo cambiar ubicaciones del mapa
-
-// ========================================
-// MÉTODO 1: Cambiar coordenadas directamente
-// ========================================
-
-// Para cambiar a Mall del Sur:
-// En map-config.js, cambia las coordenadas:
-/*
-location: {
-    lat: -12.2000,  // Latitud del Mall del Sur
-    lng: -76.9500   // Longitud del Mall del Sur
-}
-*/
-
-// ========================================
-// MÉTODO 2: Usar funciones JavaScript
-// ========================================
-
-// Ejemplo 1: Cambiar a Mall del Sur
-// Abre la consola del navegador (F12) y ejecuta:
-// changeLocation('Mall del Sur, Chorrillos, Lima, Perú');
-
-// Ejemplo 2: Cambiar a Plaza Norte
-// changeLocation('Plaza Norte, Independencia, Lima, Perú');
-
-// Ejemplo 3: Cambiar a Jockey Plaza
-// changeLocation('Jockey Plaza, Santiago de Surco, Lima, Perú');
-
-// ========================================
-// MÉTODO 3: Ubicaciones predefinidas
-// ========================================
 
 // Usar ubicaciones predefinidas:
 // setPredefinedLocation('mall-del-sur');
@@ -37,31 +5,9 @@ location: {
 // setPredefinedLocation('jockey-plaza');
 // setPredefinedLocation('real-plaza');
 // setPredefinedLocation('centro-lima');
-
 // ========================================
-// MÉTODO 4: Coordenadas específicas
+// COORDENADAS DE LUGARES POPULARES EN LIMAS
 // ========================================
-
-// Para ubicaciones específicas con coordenadas exactas:
-// updateMapLocation(-12.2000, -76.9500, 'Mall del Sur');
-
-// ========================================
-// COORDENADAS DE LUGARES POPULARES EN LIMA
-// ========================================
-
-const COORDENADAS_LIMA = {
-    'mall-del-sur': { lat: -12.2000, lng: -76.9500 },
-    'plaza-norte': { lat: -11.9500, lng: -77.0500 },
-    'jockey-plaza': { lat: -12.1000, lng: -77.0000 },
-    'real-plaza': { lat: -12.0500, lng: -77.1000 },
-    'centro-lima': { lat: -12.0464, lng: -77.0428 },
-    'miraflores': { lat: -12.1200, lng: -77.0300 },
-    'san-isidro': { lat: -12.1000, lng: -77.0300 },
-    'la-molina': { lat: -12.0800, lng: -76.9500 },
-    'ate': { lat: -12.0500, lng: -76.9000 },
-    'callao': { lat: -12.0500, lng: -77.1000 }
-};
-
 // Función para usar coordenadas predefinidas
 function usarCoordenadasPredefinidas(lugar) {
     if (COORDENADAS_LIMA[lugar]) {
@@ -132,6 +78,3 @@ function obtenerCoordenadas(direccion) {
             console.error('Error al buscar coordenadas:', error);
         });
 }
-
-// Ejemplo de uso:
-// obtenerCoordenadas('Mall del Sur, Lima, Perú');

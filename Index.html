@@ -6,27 +6,27 @@
     <link rel="icon" href="Logo 1.png" media="(prefers-color-scheme: dark)"> <!-- Logo para modo oscuro -->
     <link rel="icon" href="logo 2.png" media="(prefers-color-scheme: light)"> <!-- Logo para modo claro -->
     <title>Club Sonrisa</title>
-    <meta name="theme-color" content="#52A2B4">
-    <link rel="stylesheet" href="Estilos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#52A2B4"> <!-- Color de la barra de la pestaña -->
+    <link rel="stylesheet" href="Estilos.css"> <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Preload para que cargue el font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Preload para que cargue el font -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet"> <!-- Tipo de font -->
 </head>
 <body>
     
-    <div id="preloader" aria-hidden="true">
+    <div id="preloader" aria-hidden="true"> <!-- Preloader -->
         <div class="preloader-inner">
             <div class="preloader-logo">
                 <img src="Sonrisas.ico" width="Auto" height="130" alt="" media="(prefers-color-scheme: dark)">
             </div>
-            <div class="preloader-title">Cargando...</div>
+            <div class="preloader-title">Cargando...</div> <!-- Titulo del preloader -->
         </div>
     </div>
 
     <!-- Barra de navegación -->
-    <nav class="navbar">
-        <div class="container">
+    <nav class="navbar"> <!-- Barra de navegación -->
+        <div class="container"> <!-- Contenedor de la barra de navegación -->
             <div class="logo"> <!-- Definimos el logo a la derecha -->
                 <img src="Imagen2.png" width="100" height="60" alt=""> <!-- Imaggen de Club Sonrisa -->
             </div>
@@ -38,7 +38,7 @@
                 <li><a href="#contacto" class="Ct">Contacto</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"> <!-- Boton de menu for cellphones  -->
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars"></i> <!-- Icono de 3 barras -->
             </button>
         </div>
     </nav>
@@ -48,8 +48,8 @@
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-video-container">
-            <img src="IMG_0554.JPG" class="hero-video hero-1 active" style="--pos-x: 45%; --pos-y: 40%;" alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
-            <img src="IMG_0575.JPG" class="hero-video hero-2" style="--pos-x: 60%; --pos-y: 50%;" alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
+            <img src="IMG_0554.JPG" class="hero-video hero-1 active"  alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
+            <img src="IMG_0575.JPG" class="hero-video hero-2"  alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
             <!-- <video class="hero-video" autoplay muted loop playsinline preload="metadata"> -->
                 <!-- Aquí puedes agregar tu video -->
                 <!-- <source src="6914761_Motion_Graphics_Motion_Graphic_1920x1080.mp4" type="video/mp4"> -->
@@ -60,10 +60,10 @@
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-text">
+            <div class="hero-text"> <!-- Titulo de inicio -->
                 <h1 class="hero-title">Una vida mejor comienza con una hermosa sonrisa</h1>
                 <p class="hero-subtitle">Especialistas en salud dental y más</p>
-                <div class="hero-buttons">
+                <div class="hero-buttons"> <!-- Botones de la parte de abajo de  inicio -->
                     <a href="#contacto" class="btn btn-primary">Agendar Cita</a>
                     <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
                 </div>
@@ -74,19 +74,19 @@
         </div>
     </section>
 
-    <!-- Casos Clínicos -->
+    <!-- Seccion de Casos Clínicos -->
     <section class="casos-clinicos" id="casos">
         <div class="container">
             <div class="section-header">
                 <br>
-                <span class="section-tag">Experiencia</span>
+                <span class="section-tag">Experiencia</span> <!-- Etiqueta de la seccion -->
                 <h2>Bienvenido a Club Sonrisa</h2>
                 <p>Somos un grupo humano convencido en que la sonrisa sincera y real es la mejor forma de atraer a las personas. Por tanto, en nuestra clinica ofrecemos lo mejor de nuestras capacidades y aptitudes para lograr que la salud oral de cada paciente se refleje en su sonrisa, mucho mas allá de la belleza estética</p>
             </div>
             <div class="casos-grid">
                 <div class="caso-card ">
                     <div class="caso-icon">
-                        <i class="fas fa-tooth"></i>
+                        <i class="fas fa-tooth"></i>  <!-- Icono de Font Awesome -->
                     </div>
                     <h3>Tratamiento Avanzado</h3>
                     <p>Integramos tecnología y cercanía para mejorar la experiencia del paciente.</p>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="caso-card ">
                     <div class="caso-icon">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> <!-- Icono de Font Awesome -->
                     </div>
                     <h3>Resultados garantizados</h3>
                     <p>Aclaramos tus dudas y te acompañamos en cada etapa de tu sonrisa.</p>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="caso-card ">
                     <div class="caso-icon">
-                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i> <!-- Icono de Font Awesome -->
                     </div>
                     <h3>Dedicado compromiso</h3>
                     <p>Con optimismo y compromiso, hacemos posible cada sonrisa.</p>
@@ -117,7 +117,7 @@
                     <p>Regístrate para recibir noticias y estar en nuestra base de datos para futuras consultas.</p>
                     <div class="video-container">
                         <video id="autoVideo" class="auto-video" autoplay muted loop playsinline preload="auto" poster="poster.jpg"> <!-- poster imagen previa and Preload para que cargue el video y no se detenga -->
-                            <source src="video-auto.mp4" type="video/mp4">
+                            <source src="video-auto.mp4" type="video/mp4"> <!-- Apartado de video -->
                             Tu navegador no soporta el elemento video.
                         </video>
                         <div class="video-overlay">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <button class="btn btn-primary" style="margin-top: 1rem;">
-                        Registrate <i class="fas fa-play"></i>
+                        Registrate <i class="fas fa-play"></i> <!-- Boton de registrate -->
                     </button>
                 </div>
             </div>
@@ -137,7 +137,7 @@
         <div class="container">
             <div class="section-header">
                 <br>
-                <span class="section-tag">Calidad</span>
+                <span class="section-tag">Calidad</span> <!-- Etiqueta de la seccion -->
                 <h2>Servicios</h2>
                 <p>Nuestros clientes nos respaldan por brindar un excelente servicio con equipos de primera y los mejores especialistas.</p>
             </div>
@@ -146,7 +146,7 @@
                     <div class="servicios-carousel">
                         <div class="servicios-grid" id="serviciosGrid">
                             <div class="servicio-item s-1">
-                                <div class="servicio-icon">
+                                <div class="servicio-icon"> <!-- Servicio 1 -->
                                     <img src="Brackets.png" class="icon2" alt="Icono de ortodoncia" loading="lazy" decoding="async">
                                 </div>
                                 <h3>Ortodoncia</h3>
@@ -154,7 +154,7 @@
                                 <br>
                                 <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <div class="servicio-item s-2">
+                            <div class="servicio-item s-2"> <!-- Servicio 2 -->
                                 <div class="servicio-icon">
                                     <img src="Child.png" class="icon2" alt="Icono de odontopediatría" loading="lazy" decoding="async">
                                 </div>
@@ -163,7 +163,7 @@
                                 <br>
                                 <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <div class="servicio-item s-3">
+                            <div class="servicio-item s-3"> <!-- Servicio 3 -->
                                 <div class="servicio-icon">
                                     <img src="Tooth brillannte.png" class="icon2" alt="Icono de estética dental" loading="lazy" decoding="async">
                                 </div>
@@ -172,7 +172,7 @@
                                 <br>
                                 <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <div class="servicio-item s-4">
+                            <div class="servicio-item s-4"> <!-- Servicio 4 -->
                                 <div class="servicio-icon">
                                     <img src="pasta-dental.png" class="icon2" alt="Icono de blanqueamiento" loading="lazy" decoding="async">
                                 </div>
@@ -181,7 +181,7 @@
                                 <br>
                                 <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <div class="servicio-item s-5">
+                            <div class="servicio-item s-5"> <!-- Servicio 5 -->
                                 <div class="servicio-icon">
                                     <img src="implante-dental.png" class="icon2" alt="Icono de implantes dentales" loading="lazy" decoding="async">
                                 </div>
@@ -190,7 +190,7 @@
                                 <br>
                                 <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <div class="servicio-item s-6">
+                            <div class="servicio-item s-6"> <!-- Servicio 6 -->
                                 <div class="servicio-icon">
                                     <img src="diente.png" class="icon2" alt="Icono de rehabilitación oral" loading="lazy" decoding="async">
                                 </div>
@@ -199,7 +199,7 @@
                                 <br>
                                 <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <div class="servicio-item s-7">
+                            <div class="servicio-item s-7"> <!-- Servicio 7 -->
                                 <div class="servicio-icon">
                                     <img src="extracto.png" class="icon2" alt="Icono de endodoncia" loading="lazy" decoding="async">
                                 </div>
@@ -208,7 +208,7 @@
                                 <br>
                                 <a href="#" class="card-link2">Conoce más<i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <div class="servicio-item s-8">
+                            <div class="servicio-item s-8"> <!-- Servicio 8 -->
                                 <div class="servicio-icon">
                                     <img src="silla-de-dentista.png" class="icon2" alt="Icono de cirugía" loading="lazy" decoding="async">
                                 </div>
@@ -221,10 +221,10 @@
                         
                         <!-- Controles de navegación -->
                         <div class="carousel-controls">
-                            <button class="carousel-btn prev-btn" id="prevServices" aria-label="Anterior servicio">
+                            <button class="carousel-btn prev-btn" id="prevServices" aria-label="Anterior servicio"> <!-- Boton de anterior servicio -->
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <button class="carousel-btn next-btn" id="nextServices" aria-label="Siguiente servicio">
+                            <button class="carousel-btn next-btn" id="nextServices" aria-label="Siguiente servicio"> <!-- Boton de siguiente servicio -->
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
@@ -248,11 +248,11 @@
         <div class="container">
             <div class="instalaciones-content">
                 <div class="instalaciones-text">
-                    <span class="section-tag">Instalaciones</span>
+                    <span class="section-tag">Instalaciones</span> <!-- Etiqueta de la seccion -->
                     <h2>Doctores experimentados y tecnología avanzada</h2>
                     <p>Con tecnología de vanguardia e instalaciones de alta calidad, nuestro equipo especializado ofrece soluciones a la medida de cada cliente.</p>
                     <ul class="features-list">
-                        <li><i class="fas fa-check-circle"></i> Equipos esterilizados y certificados</li>
+                        <li><i class="fas fa-check-circle"></i> Equipos esterilizados y certificados</li> <!-- Carateristicas de la seccion -->
                         <li><i class="fas fa-check-circle"></i> Tecnología 3D para diagnóstico</li>
                         <li><i class="fas fa-check-circle"></i> Ambiente cómodo y relajante</li>
                         <li><i class="fas fa-check-circle"></i> Protocolos de bioseguridad</li>
@@ -262,19 +262,19 @@
                     <div class="gallery-container">
                         <div class="gallery-main">
                             <div class="image-wrapper active">
-                                <img src="Instalacion.jpeg" alt="Instalaciones dentales">
+                                <img src="Instalacion.jpeg" alt="Instalaciones dentales"> <!-- lazy y decoding async Hacen que las imagenes se cargguen cuando sea necesario -->
                             </div>
                             <div class="image-wrapper">
-                                <img src="Home.jpeg" alt="Recepción de la clínica" loading="lazy" decoding="async">
+                                <img src="Home.jpeg" alt="Recepción de la clínica" loading="lazy" decoding="async"> <!-- Imagen 1-->
                             </div>
                             <div class="image-wrapper">
-                                <img src="Instalacion 3.jpeg" alt="Consultorio moderno" loading="lazy" decoding="async">
+                                <img src="Instalacion 3.jpeg" alt="Consultorio moderno" loading="lazy" decoding="async"> <!-- Imagen 2-->
                             </div>
                             <div class="image-wrapper">
-                                <img src="Instalacion 4.jpeg" alt="Equipos de última generación" loading="lazy" decoding="async">
+                                <img src="Instalacion 4.jpeg" alt="Equipos de última generación" loading="lazy" decoding="async"> <!-- Imagen 3-->
                             </div>
                             <div class="image-wrapper">
-                                <img src="Personall.jpeg" alt="Equipo médico" loading="lazy" decoding="async">
+                                <img src="Foto DOCTORAS.png" alt="Equipo médico" loading="lazy" decoding="async"> <!-- Imagen 4-->
                             </div>
                         </div>
                         
@@ -307,7 +307,7 @@
         <div class="container">
             <div class="section-header">
                 <br>
-                <span class="section-tag">Opiniones</span>
+                <span class="section-tag">Opiniones</span> <!-- Etiqueta de la seccion -->
                 <h2>Historias Felices</h2>
                 <p>¡Creando sonrisas vibrantes para estilos de vida saludables!</p>
             </div>
@@ -429,7 +429,7 @@
     <section class="ubicacion">
         <div class="container">
             <div class="ubicacion-content">
-                <div class="ubicacion-info ">
+                <div class="ubicacion-info ">  <!-- informacion de la ubicacion -->
                     <h2>Clinica amigable cerca de ti</h2>
                     <p>Ofrecemos una experiencia transcendente en uno de los mejores lugares de la ciudad de lima</p>
                     <div class="ubicacion-detalles">
@@ -466,13 +466,13 @@
     <!-- Contacto -->
     <section class="contacto" id="contacto">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header"> <!-- encabezado de la seccion contacto -->
                 <br>
                 <span class="section-tag">Comunícate</span>
                 <h2>Contactanos</h2>
                 <p>Con gusto te atenderemos</p>
             </div>
-            <form class="contact-form">
+            <form class="contact-form"> <!-- formulario de contacto -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="nombre">Nombre Completo</label>
