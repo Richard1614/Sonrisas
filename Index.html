@@ -48,8 +48,16 @@
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-video-container">
-            <img src="IMG_05541.JPG" class="hero-video hero-1 active"  alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
-            <img src="IMG_0575.JPG" class="hero-video hero-2"  alt="Instalaciones de la clínica"> <!-- Imagen de la instalacion -->
+            <picture class="hero-video hero-1 active">
+                <source srcset="Prueba-mobile.jpg" media="(max-width: 480px)">
+                <source srcset="Prueba-tablet.jpg" media="(max-width: 1024px)">
+                <img src="Prueba.JPG" alt="Instalaciones de la clínica" decoding="async" fetchpriority="high">
+            </picture>
+            <picture class="hero-video hero-2">
+                <source srcset="Prueba2-mobile.jpg" media="(max-width: 480px)">
+                <source srcset="Prueba2-tablet.jpg" media="(max-width: 1024px)">
+                <img src="Prueba2.JPG" alt="Instalaciones de la clínica" decoding="async">
+            </picture>
             <!-- <video class="hero-video" autoplay muted loop playsinline preload="metadata"> -->
                 <!-- Aquí puedes agregar tu video -->
                 <!-- <source src="6914761_Motion_Graphics_Motion_Graphic_1920x1080.mp4" type="video/mp4"> -->
@@ -274,7 +282,7 @@
                                 <img src="Instalacion 4.jpeg" alt="Equipos de última generación" loading="lazy" decoding="async"> <!-- Imagen 3-->
                             </div>
                             <div class="image-wrapper">
-                                <img src="Foto DOCTORAS.png" alt="Equipo médico"> <!-- Imagen 4-->
+                                <img src="Foto doctor.png" alt="Equipo médico"> <!-- Imagen 4-->
                             </div>
                         </div>
                         

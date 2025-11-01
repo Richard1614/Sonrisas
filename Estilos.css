@@ -219,10 +219,15 @@ section[id] { scroll-margin-top: 90px; }
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
     opacity: 0;
     transition: opacity 700ms ease-in-out;
+}
+
+.hero-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .hero-video.active {
@@ -438,12 +443,14 @@ section[id] { scroll-margin-top: 90px; }
     font-size: 1.2rem;
     transition: all 0.3s ease;
     pointer-events: all;
+    opacity: 0.6;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .gallery-btn:hover {
     background: #3073B7;
     color: white;
+    opacity: 0.9;
     transform: scale(1.1);
 }
 .gallery-btn:focus-visible, .carousel-btn:focus-visible {
@@ -1301,7 +1308,7 @@ body.loading { overflow: hidden; }
 
 .instalaciones-image .image-wrapper {
     width: 100%;
-    height: 400px;
+    height: 550px;
     background: var(--gradient);
     border-radius: 20px;
     display: flex;
@@ -1820,8 +1827,8 @@ body.loading { overflow: hidden; }
     }
 
     /* Encadre específico por imagen en móviles (<=768px) */
-    .hero-video.hero-1 { object-position: center 35%; }
-    .hero-video.hero-2 { object-position: center 45%; }
+    .hero-video.hero-1 img { object-position: center 30%; }
+    .hero-video.hero-2 img { object-position: center 40%; }
 
     .hero-title { /* para 768px */
         font-size: clamp(1.8rem, 4.7vw, 2.3rem);
@@ -1941,12 +1948,12 @@ body.nav-open { overflow: hidden; }
     }
     
     /* Video responsive */
-    .hero-video {
+    .hero-video img {
         object-position: center 25%; /* base móvil */
     }
     /* Afinar aún más por imagen en pantallas muy estrechas (<=480px) */
-    .hero-video.hero-1 { object-position: center 30%; }
-    .hero-video.hero-2 { object-position: center 40%; }
+    .hero-video.hero-1 img { object-position: center 28%; }
+    .hero-video.hero-2 img { object-position: center 38%; }
     
     /* En móviles, reducir la opacidad del overlay para mejor visibilidad */
     .hero-overlay {

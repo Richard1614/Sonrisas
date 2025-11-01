@@ -1192,6 +1192,36 @@ function waitForServiceMedia() {
     return Promise.all(promises);
 }
 
+function waitForAllImages() {
+    const imgs = Array.from(document.querySelectorAll('img'));
+    if (imgs.length === 0) return Promise.resolve();
+
+    // Solo esperar imágenes críticas o visibles. Evitar bloqueo por "loading=lazy" offscreen.
+    const watchImgs = imgs.filter(img => {
+        const critical = img.hasAttribute('data-critical');
+        const lazy = img.loading === 'lazy' || (img.getAttribute('loading') === 'lazy');
+        if (critical) return true;
+        if (!lazy) return true;
+        // si es lazy, solo espera si está en el viewport
+        const rect = img.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0 && rect.left < window.innerWidth && rect.right > 0;
+        return inView;
+    });
+
+    if (watchImgs.length === 0) return Promise.resolve();
+
+    const promises = watchImgs.map(img => {
+        const dataSrc = img.getAttribute('data-src');
+        if (dataSrc && !img.src) img.src = dataSrc;
+        return new Promise(res => {
+            if (img.complete && img.naturalWidth > 0) return res();
+            img.addEventListener('load', res, { once: true });
+            img.addEventListener('error', res, { once: true });
+        });
+    });
+    return Promise.all(promises);
+}
+
 function hidePreloader() {
     const pre = document.getElementById('preloader');
     if (pre) pre.classList.add('hidden');
@@ -1204,17 +1234,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loading');
 
     const video = document.getElementById('autoVideo');
+
     const ready = Promise.all([
         waitForVideoReady(video),
         waitForServiceMedia(),
+        waitForAllImages(),
+        (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve()
     ]);
 
-    // Timeout de seguridad para no bloquear
-    const timeout = new Promise(res => setTimeout(res, 3000));
+    // Timeout de seguridad global para evitar bloqueo (p.ej. recursos externos)
+    const timeout = new Promise(res => setTimeout(res, 8000));
 
     Promise.race([ready, timeout]).finally(() => {
         hidePreloader();
-        // Asegurar play del video y loop infinito tras mostrar
         if (video) {
             ensureVideoLooping(video);
         }
